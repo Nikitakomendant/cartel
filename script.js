@@ -64,20 +64,32 @@
 
 // === SCROLL REVEAL (Intersection Observer) ===
 (function initReveal() {
-  // Respect reduced motion preference (Apple HIG: Motion accessibility)
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (prefersReducedMotion) return;
-
-  const targets = document.querySelectorAll(
+  // Elements that don't carry the .reveal class in markup yet — add it + a stagger delay
+  const autoTargets = document.querySelectorAll(
     '.venue-card, .stat-item, .event-item, .contact-card, .feature-item, .booking-form, .philosophy-visual, .timeline-card, .beyond-card, .pillar-card'
   );
-
-  targets.forEach((el, i) => {
+  autoTargets.forEach((el, i) => {
     el.classList.add('reveal');
     // Stagger delay for grid items
     const delay = (i % 4) * 80;
     el.style.transitionDelay = `${delay}ms`;
   });
+
+  // Observe EVERY element with .reveal — both the ones just tagged above and
+  // any already hardcoded in a page's markup (restaurant-card, banya-card,
+  // gallery-item, package-card, service-card, menu-item, etc.). Previously
+  // only the fixed selector list above was observed, so any hardcoded
+  // .reveal element elsewhere on the site never got its .visible class and
+  // stayed permanently invisible (opacity: 0).
+  const targets = document.querySelectorAll('.reveal');
+
+  // Respect reduced motion preference (Apple HIG: Motion accessibility) —
+  // show everything immediately instead of animating.
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReducedMotion) {
+    targets.forEach(el => el.classList.add('visible'));
+    return;
+  }
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
