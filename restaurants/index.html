@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ресторани — Cartel Holding</title>
-  <meta name="description" content="17 ресторанів Cartel у Буковелі, Яремче та Одесі. Українська, італійська, азійська та американська кухня від шеф-кухарів з міжнародним досвідом.">
+  <meta name="description" content="17 ресторанів Cartel у Буковелі — українська, італійська, азійська та середземноморська кухня, après-ski бари та лаунж-зони від шеф-кухарів з міжнародним досвідом.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -66,28 +66,6 @@
     .restaurants-section {
       padding: var(--space-32) 0;
       background: var(--color-bg-primary);
-    }
-    .restaurants-filter {
-      display: flex;
-      gap: var(--space-3);
-      flex-wrap: wrap;
-      margin-bottom: var(--space-12);
-    }
-    .filter-btn {
-      font-size: var(--text-sm);
-      font-weight: 500;
-      color: var(--color-text-secondary);
-      background: var(--color-bg-elevated);
-      border: 1px solid var(--color-separator);
-      padding: var(--space-2) var(--space-5);
-      border-radius: var(--radius-pill);
-      cursor: pointer;
-      transition: all var(--duration-fast);
-    }
-    .filter-btn:hover, .filter-btn.active {
-      color: var(--color-bg-primary);
-      background: var(--color-accent);
-      border-color: var(--color-accent);
     }
     .restaurants-grid {
       display: grid;
@@ -196,14 +174,6 @@
     .restaurant-card:hover .restaurant-card-image img {
       transform: scale(1.05);
     }
-    .restaurants-note {
-      font-size: var(--text-sm);
-      color: var(--color-text-tertiary);
-      text-align: center;
-      margin-top: var(--space-12);
-      padding-top: var(--space-8);
-      border-top: 1px solid var(--color-separator);
-    }
 
     @media (max-width: 900px) {
       .restaurants-grid { grid-template-columns: repeat(2, 1fr); }
@@ -268,7 +238,7 @@
           17 ресторанів.<br><em>Один смак</em><br>досконалості.
         </h1>
         <p class="page-hero-subtitle">
-          Від гірських хижок у Буковелі до морських терас в Одесі — кожен заклад Cartel пропонує унікальну атмосферу та авторську кухню від шеф-кухарів з міжнародним досвідом.
+          Від затишної гуцульської колиби до панорамних après-ski терас — кожен заклад Cartel у Буковелі пропонує унікальну атмосферу та авторську кухню.
         </p>
       </div>
     </section>
@@ -280,13 +250,6 @@
           <p class="section-eyebrow">Наші заклади</p>
           <h2 class="section-title" id="restaurants-heading">Всі ресторани Cartel</h2>
           <p class="section-subtitle">Кожен заклад — окремий характер, кухня та атмосфера</p>
-        </div>
-
-        <div class="restaurants-filter" role="group" aria-label="Фільтр за локацією">
-          <button class="filter-btn active" id="filter-all" data-filter="all">Всі</button>
-          <button class="filter-btn" id="filter-bukovel" data-filter="bukovel">Буковель</button>
-          <button class="filter-btn" id="filter-odesa" data-filter="odesa">Одеса</button>
-          <button class="filter-btn" id="filter-yaremche" data-filter="yaremche">Яремче</button>
         </div>
 
         <div class="restaurants-grid" id="restaurants-grid">
@@ -564,7 +527,6 @@
           </article>
 
         </div>
-        <p class="restaurants-note">Заклади в Одесі та Яремче — матеріал наповнюється. Надішліть фото та описи — додамо найближчим часом.</p>
       </div>
     </section>
 
@@ -583,14 +545,23 @@
                 <label for="book-venue" class="form-label">Заклад</label>
                 <select id="book-venue" name="venue" class="form-select" required>
                   <option value="">Оберіть ресторан</option>
-                  <option value="cartel-main">Cartel Restaurant (Буковель)</option>
-                  <option value="la-famiglia">La Famiglia (Буковель)</option>
-                  <option value="the-grill">The Grill (Буковель)</option>
-                  <option value="sake-bar">Sake Bar (Буковель)</option>
-                  <option value="hata-tarasa">Хата Тараса (Буковель)</option>
-                  <option value="cartel-odesa">Cartel Odesa</option>
-                  <option value="fire-wine">Cartel Fire & Wine (Одеса)</option>
-                  <option value="carpathian">Cartel Carpathian (Яремче)</option>
+                  <option value="asia-garden">Asia Garden</option>
+                  <option value="jagermeister">Jägermeister Après Ski Zone</option>
+                  <option value="living-room">Living Room</option>
+                  <option value="girafa">GIRAFA restaurant & lounge</option>
+                  <option value="teppan">TEPPAN grill & sushi</option>
+                  <option value="yeti">Yeti Après-Ski Terrace</option>
+                  <option value="le-grand">LE GRAND RESTAURANT</option>
+                  <option value="veranda">VERANDA Karaoke & Lounge</option>
+                  <option value="kolyba">Колиба</option>
+                  <option value="osteria">Osteria Italiana</option>
+                  <option value="plov">PLOV</option>
+                  <option value="rebra-bbq">REBRA BBQ beer'n'grill</option>
+                  <option value="riba-grill">Риба Grill</option>
+                  <option value="panorama-lounge">Panorama Lounge</option>
+                  <option value="filvarok">Filvarok</option>
+                  <option value="salo">SALO</option>
+                  <option value="mangalica">MANGALICA</option>
                 </select>
               </div>
               <div class="form-group">
@@ -681,22 +652,5 @@
   </footer>
 
   <script src="../script.js"></script>
-  <script>
-    // Filter functionality
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const cards = document.querySelectorAll('.restaurant-card');
-
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        filterBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const filter = btn.dataset.filter;
-        cards.forEach(card => {
-          const match = filter === 'all' || card.dataset.location === filter;
-          card.style.display = match ? '' : 'none';
-        });
-      });
-    });
-  </script>
 </body>
 </html>
