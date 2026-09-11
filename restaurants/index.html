@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ресторани — Cartel Holding</title>
-  <meta name="description" content="19 ресторанів Cartel у Буковелі, Яремче та Одесі. Українська, італійська, азійська та американська кухня від шеф-кухарів з міжнародним досвідом.">
+  <meta name="description" content="17 ресторанів Cartel у Буковелі, Яремче та Одесі. Українська, італійська, азійська та американська кухня від шеф-кухарів з міжнародним досвідом.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -186,6 +186,25 @@
     }
     .restaurant-card-link:hover { color: var(--color-accent-hover); }
 
+    .restaurant-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform var(--duration-slow);
+    }
+    .restaurant-card:hover .restaurant-card-image img {
+      transform: scale(1.05);
+    }
+    .restaurants-note {
+      font-size: var(--text-sm);
+      color: var(--color-text-tertiary);
+      text-align: center;
+      margin-top: var(--space-12);
+      padding-top: var(--space-8);
+      border-top: 1px solid var(--color-separator);
+    }
+
     @media (max-width: 900px) {
       .restaurants-grid { grid-template-columns: repeat(2, 1fr); }
     }
@@ -246,7 +265,7 @@
           <span>Ресторани</span>
         </div>
         <h1 class="page-hero-title" id="page-hero-heading">
-          19 ресторанів.<br><em>Один смак</em><br>досконалості.
+          17 ресторанів.<br><em>Один смак</em><br>досконалості.
         </h1>
         <p class="page-hero-subtitle">
           Від гірських хижок у Буковелі до морських терас в Одесі — кожен заклад Cartel пропонує унікальну атмосферу та авторську кухню від шеф-кухарів з міжнародним досвідом.
@@ -272,154 +291,280 @@
 
         <div class="restaurants-grid" id="restaurants-grid">
 
-          <!-- Буковель -->
-          <article class="restaurant-card reveal" id="rest-cartel-main" data-location="bukovel">
+          <article class="restaurant-card reveal" id="rest-asia-garden" data-location="bukovel">
             <div class="restaurant-card-image">
-              <div class="restaurant-card-image-bg" style="background: linear-gradient(135deg, #1a0a00, #3d1a00);">🍽</div>
+              <img src="../images/restaurants/asia-garden.jpg" alt="Asia Garden" loading="lazy" width="600" height="400">
               <span class="restaurant-card-badge">Буковель</span>
             </div>
             <div class="restaurant-card-body">
               <span class="restaurant-card-location">ТК «Буковель»</span>
-              <h3 class="restaurant-card-name">Cartel Restaurant</h3>
-              <p class="restaurant-card-desc">Флагманський ресторан холдингу. Панорамні вікна з видом на Карпати, авторське меню сезонних страв та власна карта вин від сомельє.</p>
+              <h3 class="restaurant-card-name">Asia Garden</h3>
+              <p class="restaurant-card-desc">Все різноманіття смаків Азії під сучасну електронну музику в антуражі тропічного лісу.</p>
+              <div class="restaurant-card-footer">
+                <span class="restaurant-cuisine-tag">Азійська кухня</span>
+                <a href="tel:+380673441099" class="restaurant-card-link" id="link-rest-asia-garden">Забронювати →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="restaurant-card reveal" id="rest-jagermeister" data-location="bukovel">
+            <div class="restaurant-card-image">
+              <img src="../images/restaurants/jagermeister.jpg" alt="Jägermeister Après Ski Zone" loading="lazy" width="600" height="400">
+              <span class="restaurant-card-badge">Буковель</span>
+            </div>
+            <div class="restaurant-card-body">
+              <span class="restaurant-card-location">ТК «Буковель»</span>
+              <h3 class="restaurant-card-name">Jägermeister Après Ski Zone</h3>
+              <p class="restaurant-card-desc">Нова локація в Буковелі «Après Ski Zone» на території верхньої станції витягу 2R.</p>
+              <div class="restaurant-card-footer">
+                <span class="restaurant-cuisine-tag">Après-ski бар</span>
+                <a href="tel:+380673441099" class="restaurant-card-link" id="link-rest-jagermeister">Забронювати →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="restaurant-card reveal" id="rest-living-room" data-location="bukovel">
+            <div class="restaurant-card-image">
+              <img src="../images/restaurants/living-room.jpg" alt="Living Room" loading="lazy" width="600" height="400">
+              <span class="restaurant-card-badge">Буковель</span>
+            </div>
+            <div class="restaurant-card-body">
+              <span class="restaurant-card-location">ТК «Буковель»</span>
+              <h3 class="restaurant-card-name">Living Room</h3>
+              <p class="restaurant-card-desc">Панорамний ресторан в самому серці Буковелю.</p>
               <div class="restaurant-card-footer">
                 <span class="restaurant-cuisine-tag">Авторська кухня</span>
-                <a href="osteria-italiana/index.html" class="restaurant-card-link">Детальніше →</a>
+                <a href="tel:+380673441099" class="restaurant-card-link" id="link-rest-living-room">Забронювати →</a>
               </div>
             </div>
           </article>
 
-          <article class="restaurant-card reveal" id="rest-la-famiglia" data-location="bukovel">
+          <article class="restaurant-card reveal" id="rest-girafa" data-location="bukovel">
             <div class="restaurant-card-image">
-              <div class="restaurant-card-image-bg" style="background: linear-gradient(135deg, #0d1a00, #1a3300);">🍕</div>
+              <img src="../images/restaurants/girafa.jpg" alt="GIRAFA restaurant & lounge" loading="lazy" width="600" height="400">
               <span class="restaurant-card-badge">Буковель</span>
             </div>
             <div class="restaurant-card-body">
               <span class="restaurant-card-location">ТК «Буковель»</span>
-              <h3 class="restaurant-card-name">La Famiglia</h3>
-              <p class="restaurant-card-desc">Автентична італійська піцерія з дровяною піччю. Паста ручної роботи, свіжа бурата та широкий вибір амаро.</p>
+              <h3 class="restaurant-card-name">GIRAFA restaurant & lounge</h3>
+              <p class="restaurant-card-desc">Ресторан середземноморської кухні.</p>
+              <div class="restaurant-card-footer">
+                <span class="restaurant-cuisine-tag">Середземноморська кухня</span>
+                <a href="tel:+380673441099" class="restaurant-card-link" id="link-rest-girafa">Забронювати →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="restaurant-card reveal" id="rest-teppan" data-location="bukovel">
+            <div class="restaurant-card-image">
+              <img src="../images/restaurants/teppan.jpg" alt="TEPPAN grill & sushi" loading="lazy" width="600" height="400">
+              <span class="restaurant-card-badge">Буковель</span>
+            </div>
+            <div class="restaurant-card-body">
+              <span class="restaurant-card-location">ТК «Буковель»</span>
+              <h3 class="restaurant-card-name">TEPPAN grill & sushi</h3>
+              <p class="restaurant-card-desc">Стильний ресторан TEPPAN grill & sushi.</p>
+              <div class="restaurant-card-footer">
+                <span class="restaurant-cuisine-tag">Теппан-гриль / суші</span>
+                <a href="tel:+380673441099" class="restaurant-card-link" id="link-rest-teppan">Забронювати →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="restaurant-card reveal" id="rest-yeti" data-location="bukovel">
+            <div class="restaurant-card-image">
+              <img src="../images/restaurants/yeti.jpg" alt="Yeti Après-Ski Terrace" loading="lazy" width="600" height="400">
+              <span class="restaurant-card-badge">Буковель</span>
+            </div>
+            <div class="restaurant-card-body">
+              <span class="restaurant-card-location">ТК «Буковель»</span>
+              <h3 class="restaurant-card-name">Yeti Après-Ski Terrace</h3>
+              <p class="restaurant-card-desc">Тераса для відпочинку одразу після схилу — просто неба, з видом на гори.</p>
+              <div class="restaurant-card-footer">
+                <span class="restaurant-cuisine-tag">Après-ski тераса</span>
+                <a href="tel:+380673441099" class="restaurant-card-link" id="link-rest-yeti">Забронювати →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="restaurant-card reveal" id="rest-le-grand" data-location="bukovel">
+            <div class="restaurant-card-image">
+              <img src="../images/restaurants/le-grand.jpg" alt="LE GRAND RESTAURANT" loading="lazy" width="600" height="400">
+              <span class="restaurant-card-badge">Буковель</span>
+            </div>
+            <div class="restaurant-card-body">
+              <span class="restaurant-card-location">ТК «Буковель»</span>
+              <h3 class="restaurant-card-name">LE GRAND RESTAURANT</h3>
+              <p class="restaurant-card-desc">Особливе місце, де ви можете насолодитися вишуканою кухнею, неймовірними краєвидами та атмосферою.</p>
+              <div class="restaurant-card-footer">
+                <span class="restaurant-cuisine-tag">Вишукана кухня</span>
+                <a href="tel:+380673441099" class="restaurant-card-link" id="link-rest-le-grand">Забронювати →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="restaurant-card reveal" id="rest-veranda" data-location="bukovel">
+            <div class="restaurant-card-image">
+              <img src="../images/restaurants/veranda.jpg" alt="VERANDA Karaoke & Lounge" loading="lazy" width="600" height="400">
+              <span class="restaurant-card-badge">Буковель</span>
+            </div>
+            <div class="restaurant-card-body">
+              <span class="restaurant-card-location">ТК «Буковель»</span>
+              <h3 class="restaurant-card-name">VERANDA Karaoke & Lounge</h3>
+              <p class="restaurant-card-desc">Єдина в Карпатах лаунж-зона, розроблена за унікальною концепцією у стилі скляної архітектури.</p>
+              <div class="restaurant-card-footer">
+                <span class="restaurant-cuisine-tag">Караоке-лаунж</span>
+                <a href="tel:+380673441099" class="restaurant-card-link" id="link-rest-veranda">Забронювати →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="restaurant-card reveal" id="rest-kolyba" data-location="bukovel">
+            <div class="restaurant-card-image">
+              <img src="../images/restaurants/kolyba.jpg" alt="Колиба" loading="lazy" width="600" height="400">
+              <span class="restaurant-card-badge">Буковель</span>
+            </div>
+            <div class="restaurant-card-body">
+              <span class="restaurant-card-location">ТК «Буковель»</span>
+              <h3 class="restaurant-card-name">Колиба</h3>
+              <p class="restaurant-card-desc">Домашні вареники, гуцульський борщ, голубці з м'ясом.</p>
+              <div class="restaurant-card-footer">
+                <span class="restaurant-cuisine-tag">Гуцульська кухня</span>
+                <a href="kolyba/index.html" class="restaurant-card-link" id="link-rest-kolyba">Детальніше →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="restaurant-card reveal" id="rest-osteria" data-location="bukovel">
+            <div class="restaurant-card-image">
+              <img src="../images/restaurants/osteria.jpg" alt="Osteria Italiana" loading="lazy" width="600" height="400">
+              <span class="restaurant-card-badge">Буковель</span>
+            </div>
+            <div class="restaurant-card-body">
+              <span class="restaurant-card-location">ТК «Буковель»</span>
+              <h3 class="restaurant-card-name">Osteria Italiana</h3>
+              <p class="restaurant-card-desc">Власноруч виготовлена паста, традиційні м'ясні страви та риба, вишукані десерти.</p>
               <div class="restaurant-card-footer">
                 <span class="restaurant-cuisine-tag">Італійська кухня</span>
-                <a href="tel:+380673441099" class="restaurant-card-link" id="link-rest-famiglia">Забронювати →</a>
+                <a href="osteria-italiana/index.html" class="restaurant-card-link" id="link-rest-osteria">Детальніше →</a>
               </div>
             </div>
           </article>
 
-          <article class="restaurant-card reveal" id="rest-the-grill" data-location="bukovel">
+          <article class="restaurant-card reveal" id="rest-plov" data-location="bukovel">
             <div class="restaurant-card-image">
-              <div class="restaurant-card-image-bg" style="background: linear-gradient(135deg, #1a0000, #330a00);">🥩</div>
+              <img src="../images/restaurants/plov.jpg" alt="PLOV" loading="lazy" width="600" height="400">
               <span class="restaurant-card-badge">Буковель</span>
             </div>
             <div class="restaurant-card-body">
               <span class="restaurant-card-location">ТК «Буковель»</span>
-              <h3 class="restaurant-card-name">The Grill</h3>
-              <p class="restaurant-card-desc">М'ясний ресторан преміум-класу. Стейки зі витриманої яловичини, власна пасовища та печі з деревним вугіллям.</p>
+              <h3 class="restaurant-card-name">PLOV</h3>
+              <p class="restaurant-card-desc">Плов, чебуреки, кебаб, лагман, шурпа, янтик.</p>
               <div class="restaurant-card-footer">
-                <span class="restaurant-cuisine-tag">Гриль / М'ясо</span>
-                <a href="tel:+380673441099" class="restaurant-card-link" id="link-rest-grill">Забронювати →</a>
+                <span class="restaurant-cuisine-tag">Східна кухня</span>
+                <a href="tel:+380673441099" class="restaurant-card-link" id="link-rest-plov">Забронювати →</a>
               </div>
             </div>
           </article>
 
-          <article class="restaurant-card reveal" id="rest-sake-bar" data-location="bukovel">
+          <article class="restaurant-card reveal" id="rest-rebra-bbq" data-location="bukovel">
             <div class="restaurant-card-image">
-              <div class="restaurant-card-image-bg" style="background: linear-gradient(135deg, #00101a, #001f33);">🍱</div>
+              <img src="../images/restaurants/rebra-bbq.jpg" alt="REBRA BBQ beer'n'grill" loading="lazy" width="600" height="400">
               <span class="restaurant-card-badge">Буковель</span>
             </div>
             <div class="restaurant-card-body">
               <span class="restaurant-card-location">ТК «Буковель»</span>
-              <h3 class="restaurant-card-name">Sake Bar</h3>
-              <p class="restaurant-card-desc">Паназійська кухня з акцентом на японській традиції. Суші-бар, тепан-їдло та понад 30 видів саке та соджу.</p>
+              <h3 class="restaurant-card-name">REBRA BBQ beer'n'grill</h3>
+              <p class="restaurant-card-desc">Демократичний м'ясний BBQ ресторан у форматі casual food.</p>
               <div class="restaurant-card-footer">
-                <span class="restaurant-cuisine-tag">Паназійська кухня</span>
-                <a href="tel:+380673441099" class="restaurant-card-link" id="link-rest-sake">Забронювати →</a>
+                <span class="restaurant-cuisine-tag">BBQ / Гриль</span>
+                <a href="rebra-bbq/index.html" class="restaurant-card-link" id="link-rest-rebra-bbq">Детальніше →</a>
               </div>
             </div>
           </article>
 
-          <article class="restaurant-card reveal" id="rest-panorama" data-location="bukovel">
+          <article class="restaurant-card reveal" id="rest-riba-grill" data-location="bukovel">
             <div class="restaurant-card-image">
-              <div class="restaurant-card-image-bg" style="background: linear-gradient(135deg, #0a0a1a, #1a1a3d);">🏔</div>
-              <span class="restaurant-card-badge">Буковель</span>
-            </div>
-            <div class="restaurant-card-body">
-              <span class="restaurant-card-location">Гірськолижні схили</span>
-              <h3 class="restaurant-card-name">Panorama Bistro</h3>
-              <p class="restaurant-card-desc">Ресторан-панорама на висоті 1500 м. Гарячі страви, глінтвейн та неймовірний краєвид на гори під час обіду.</p>
-              <div class="restaurant-card-footer">
-                <span class="restaurant-cuisine-tag">Бістро / Гірська кухня</span>
-                <a href="tel:+380673441099" class="restaurant-card-link" id="link-rest-panorama">Забронювати →</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="restaurant-card reveal" id="rest-taras" data-location="bukovel">
-            <div class="restaurant-card-image">
-              <div class="restaurant-card-image-bg" style="background: linear-gradient(135deg, #0f0a00, #2d1f00);">🌻</div>
+              <img src="../images/restaurants/riba-grill.jpg" alt="Риба Grill" loading="lazy" width="600" height="400">
               <span class="restaurant-card-badge">Буковель</span>
             </div>
             <div class="restaurant-card-body">
               <span class="restaurant-card-location">ТК «Буковель»</span>
-              <h3 class="restaurant-card-name">Хата Тараса</h3>
-              <p class="restaurant-card-desc">Автентична українська кухня в інтер'єрі традиційної карпатської хати. Борщ, вареники, верещака та домашня настойка.</p>
+              <h3 class="restaurant-card-name">Риба Grill</h3>
+              <p class="restaurant-card-desc">Демократичний рибний ресторан з відкритим грилем біля озера.</p>
+              <div class="restaurant-card-footer">
+                <span class="restaurant-cuisine-tag">Рибний гриль</span>
+                <a href="tel:+380673441099" class="restaurant-card-link" id="link-rest-riba-grill">Забронювати →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="restaurant-card reveal" id="rest-panorama-lounge" data-location="bukovel">
+            <div class="restaurant-card-image">
+              <img src="../images/restaurants/panorama-lounge.jpg" alt="Panorama Lounge" loading="lazy" width="600" height="400">
+              <span class="restaurant-card-badge">Буковель</span>
+            </div>
+            <div class="restaurant-card-body">
+              <span class="restaurant-card-location">ТК «Буковель»</span>
+              <h3 class="restaurant-card-name">Panorama Lounge</h3>
+              <p class="restaurant-card-desc">Пориньте в світ смаку з асортиментом сендвічів та світових десертів, насолоджуючись краєвидом на Горгани.</p>
+              <div class="restaurant-card-footer">
+                <span class="restaurant-cuisine-tag">Сендвічі та десерти</span>
+                <a href="tel:+380673441099" class="restaurant-card-link" id="link-rest-panorama-lounge">Забронювати →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="restaurant-card reveal" id="rest-filvarok" data-location="bukovel">
+            <div class="restaurant-card-image">
+              <img src="../images/restaurants/filvarok.jpg" alt="Filvarok (5 закладів)" loading="lazy" width="600" height="400">
+              <span class="restaurant-card-badge">Буковель</span>
+            </div>
+            <div class="restaurant-card-body">
+              <span class="restaurant-card-location">ТК «Буковель»</span>
+              <h3 class="restaurant-card-name">Filvarok (5 закладів)</h3>
+              <p class="restaurant-card-desc">Українська кухня, страви на вогні.</p>
               <div class="restaurant-card-footer">
                 <span class="restaurant-cuisine-tag">Українська кухня</span>
-                <a href="tel:+380673441099" class="restaurant-card-link" id="link-rest-taras">Забронювати →</a>
+                <a href="filvarok/index.html" class="restaurant-card-link" id="link-rest-filvarok">Детальніше →</a>
               </div>
             </div>
           </article>
 
-          <!-- Одеса -->
-          <article class="restaurant-card reveal" id="rest-odesa-cartel" data-location="odesa">
+          <article class="restaurant-card reveal" id="rest-salo" data-location="bukovel">
             <div class="restaurant-card-image">
-              <div class="restaurant-card-image-bg" style="background: linear-gradient(135deg, #001a1a, #003333);">🌊</div>
-              <span class="restaurant-card-badge">Одеса</span>
+              <img src="../images/restaurants/salo.jpg" alt="SALO" loading="lazy" width="600" height="400">
+              <span class="restaurant-card-badge">Буковель</span>
             </div>
             <div class="restaurant-card-body">
-              <span class="restaurant-card-location">Одеса, Аркадія</span>
-              <h3 class="restaurant-card-name">Cartel Odesa</h3>
-              <p class="restaurant-card-desc">Морський ресторан з терасою прямо на березі. Свіжа риба та морепродукти, середземноморська кухня та захід сонця над морем.</p>
+              <span class="restaurant-card-location">ТК «Буковель»</span>
+              <h3 class="restaurant-card-name">SALO</h3>
+              <p class="restaurant-card-desc">5 видів сала, 32 види горілки, страви з дичини.</p>
               <div class="restaurant-card-footer">
-                <span class="restaurant-cuisine-tag">Морепродукти / Середземномор'я</span>
-                <a href="tel:+380673441099" class="restaurant-card-link" id="link-rest-odesa">Забронювати →</a>
+                <span class="restaurant-cuisine-tag">Українська кухня</span>
+                <a href="salo/index.html" class="restaurant-card-link" id="link-rest-salo">Детальніше →</a>
               </div>
             </div>
           </article>
 
-          <article class="restaurant-card reveal" id="rest-odesa-grill" data-location="odesa">
+          <article class="restaurant-card reveal" id="rest-mangalica" data-location="bukovel">
             <div class="restaurant-card-image">
-              <div class="restaurant-card-image-bg" style="background: linear-gradient(135deg, #1a0d00, #331a00);">🔥</div>
-              <span class="restaurant-card-badge">Одеса</span>
+              <img src="../images/restaurants/mangalica.jpg" alt="MANGALICA" loading="lazy" width="600" height="400">
+              <span class="restaurant-card-badge">Буковель</span>
             </div>
             <div class="restaurant-card-body">
-              <span class="restaurant-card-location">Одеса, центр</span>
-              <h3 class="restaurant-card-name">Cartel Fire & Wine</h3>
-              <p class="restaurant-card-desc">Ресторан відкритого вогню в історичному центрі Одеси. М'ясо на мангалі, понад 200 позицій у карті вин та живий джаз.</p>
-              <div class="restaurant-card-footer">
-                <span class="restaurant-cuisine-tag">Гриль / Вина</span>
-                <a href="tel:+380673441099" class="restaurant-card-link" id="link-rest-fire">Забронювати →</a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Яремче -->
-          <article class="restaurant-card reveal" id="rest-yaremche-main" data-location="yaremche">
-            <div class="restaurant-card-image">
-              <div class="restaurant-card-image-bg" style="background: linear-gradient(135deg, #051a05, #0a330a);">🌲</div>
-              <span class="restaurant-card-badge">Яремче</span>
-            </div>
-            <div class="restaurant-card-body">
-              <span class="restaurant-card-location">Яремче, Карпати</span>
-              <h3 class="restaurant-card-name">Cartel Carpathian</h3>
-              <p class="restaurant-card-desc">Ресторан у серці Карпат. Місцеві гриби, дичина, карпатські сири та чай з альпійських трав біля каміна.</p>
+              <span class="restaurant-card-location">ТК «Буковель»</span>
+              <h3 class="restaurant-card-name">MANGALICA</h3>
+              <p class="restaurant-card-desc">Бограч, деруни з м'ясом дикого кабана, гомбовці.</p>
               <div class="restaurant-card-footer">
                 <span class="restaurant-cuisine-tag">Карпатська кухня</span>
-                <a href="tel:+380673441099" class="restaurant-card-link" id="link-rest-carpathian">Забронювати →</a>
+                <a href="tel:+380673441099" class="restaurant-card-link" id="link-rest-mangalica">Забронювати →</a>
               </div>
             </div>
           </article>
 
         </div>
+        <p class="restaurants-note">Заклади в Одесі та Яремче — матеріал наповнюється. Надішліть фото та описи — додамо найближчим часом.</p>
       </div>
     </section>
 
