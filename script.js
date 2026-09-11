@@ -66,7 +66,7 @@
 (function initReveal() {
   // Elements that don't carry the .reveal class in markup yet — add it + a stagger delay
   const autoTargets = document.querySelectorAll(
-    '.venue-card, .stat-item, .contact-card, .feature-item, .booking-form, .philosophy-visual, .timeline-card, .beyond-card, .pillar-card, .department-card, .message-form-wrap'
+    '.venue-card, .stat-item, .contact-card, .feature-item, .booking-form, .philosophy-visual, .timeline-card, .beyond-card, .pillar-card, .department-card, .message-form-wrap, .hotel-card, .venue-feature, .venue-cta-card'
   );
   autoTargets.forEach((el, i) => {
     el.classList.add('reveal');
@@ -112,9 +112,9 @@
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   const counters = [
-    { id: 'stat-venues',  end: 7,     suffix: '' },
-    { id: 'stat-years',   end: 18,    suffix: '' },
-    { id: 'stat-guests',  end: 500,   suffix: 'K+' },
+    { id: 'stat-venues',  end: 17,    suffix: '' },
+    { id: 'stat-years',   end: 22,    suffix: '' },
+    { id: 'stat-guests',  end: 3,     suffix: '' },
     { id: 'stat-events',  end: 200,   suffix: '+' },
   ];
 
