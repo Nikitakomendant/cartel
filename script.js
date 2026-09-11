@@ -69,7 +69,7 @@
   if (prefersReducedMotion) return;
 
   const targets = document.querySelectorAll(
-    '.venue-card, .stat-item, .event-item, .contact-card, .feature-item, .booking-form, .philosophy-visual'
+    '.venue-card, .stat-item, .event-item, .contact-card, .feature-item, .booking-form, .philosophy-visual, .timeline-card, .beyond-card, .pillar-card'
   );
 
   targets.forEach((el, i) => {
