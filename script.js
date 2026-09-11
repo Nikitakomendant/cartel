@@ -66,7 +66,7 @@
 (function initReveal() {
   // Elements that don't carry the .reveal class in markup yet — add it + a stagger delay
   const autoTargets = document.querySelectorAll(
-    '.venue-card, .stat-item, .event-item, .contact-card, .feature-item, .booking-form, .philosophy-visual, .timeline-card, .beyond-card, .pillar-card'
+    '.venue-card, .stat-item, .event-item, .contact-card, .feature-item, .booking-form, .philosophy-visual, .timeline-card, .beyond-card, .pillar-card, .department-card, .message-form-wrap'
   );
   autoTargets.forEach((el, i) => {
     el.classList.add('reveal');
@@ -200,6 +200,42 @@
         submitBtn.disabled = false;
       }
     }, 1500);
+  });
+})();
+
+
+// === CONTACTS: DEPARTMENT MESSAGE FORM ===
+(function initMessageForm() {
+  const form = document.getElementById('message-form');
+  if (!form) return;
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const name    = document.getElementById('msg-name')?.value?.trim();
+    const phone   = document.getElementById('msg-phone')?.value?.trim();
+    const email   = document.getElementById('msg-email')?.value?.trim();
+    const dept    = document.getElementById('msg-department')?.value;
+    const subject = document.getElementById('msg-subject')?.value?.trim();
+    const message = document.getElementById('msg-message')?.value?.trim();
+
+    if (!name || !phone || !dept || !subject || !message) {
+      showNotification('Будь ласка, заповніть усі обов\'язкові поля', 'error');
+      return;
+    }
+
+    const body = [
+      `Ім'я: ${name}`,
+      `Телефон: ${phone}`,
+      email ? `Email: ${email}` : null,
+      '',
+      message
+    ].filter(Boolean).join('\n');
+
+    const mailtoUrl = `mailto:${dept}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    showNotification('Відкриваємо ваш поштовий клієнт...', 'success');
+    window.location.href = mailtoUrl;
   });
 })();
 

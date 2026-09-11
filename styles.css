@@ -1358,6 +1358,101 @@ a.contact-note:hover { color: var(--color-accent); }
   }
 }
 
+/* === PARTNERS STRIP === */
+.partners-strip {
+  padding: var(--space-16) 0;
+  background: var(--color-bg-secondary);
+  border-top: 1px solid var(--color-separator);
+  border-bottom: 1px solid var(--color-separator);
+}
+
+.partners-title {
+  text-align: center;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+  margin-bottom: var(--space-10);
+}
+
+.partners-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--space-6) var(--space-12);
+}
+
+.partner-badge {
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  opacity: 0.75;
+  filter: grayscale(0.15);
+  transition: opacity var(--duration-fast), filter var(--duration-fast), transform var(--duration-fast);
+  white-space: nowrap;
+}
+
+.partner-badge:hover {
+  opacity: 1;
+  filter: grayscale(0);
+  transform: translateY(-2px);
+}
+
+.partner-carlsberg {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: var(--text-xl);
+  color: #5fa15a;
+}
+
+.partner-grimbergen {
+  font-family: var(--font-serif);
+  font-size: var(--text-lg);
+  color: #c9a463;
+}
+
+.partner-jager {
+  font-size: var(--text-sm);
+  color: #e2762e;
+  text-transform: uppercase;
+}
+.partner-jager::before { content: "🦌 "; }
+
+.partner-bukovel {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-size: var(--text-lg);
+  color: #3aa0e6;
+  text-transform: lowercase;
+}
+
+.partner-jack {
+  font-family: var(--font-serif);
+  font-size: var(--text-md);
+  color: #f5f5f7;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.partner-richard {
+  font-family: var(--font-serif);
+  font-size: var(--text-md);
+  color: #7d9bc9;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.partner-richard::before { content: "♛ "; }
+
+.partner-metaxa {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-size: var(--text-md);
+  color: #f0c419;
+  letter-spacing: 0.04em;
+}
+
 /* === REDUCED MOTION (Accessibility — Apple HIG: Motion) === */
 @media (prefers-reduced-motion: reduce) {
   *,
