@@ -66,7 +66,7 @@
 (function initReveal() {
   // Elements that don't carry the .reveal class in markup yet — add it + a stagger delay
   const autoTargets = document.querySelectorAll(
-    '.venue-card, .stat-item, .event-item, .contact-card, .feature-item, .booking-form, .philosophy-visual, .timeline-card, .beyond-card, .pillar-card, .department-card, .message-form-wrap'
+    '.venue-card, .stat-item, .contact-card, .feature-item, .booking-form, .philosophy-visual, .timeline-card, .beyond-card, .pillar-card, .department-card, .message-form-wrap'
   );
   autoTargets.forEach((el, i) => {
     el.classList.add('reveal');
