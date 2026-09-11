@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="uk" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cartel — Холдинг розваг та гастрономії</title>
+  <meta name="description" content="Cartel — преміальний холдинг розважальних та гастрономічних закладів. Ресторани, SPA, банька, клуби у Буковелі, Яремче та Одесі.">
+
+  <!-- Google Fonts: SF Pro equivalent -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" id="main-nav" role="navigation" aria-label="Головне меню">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="Cartel — на головну">
+        <span class="logo-text">CARTEL</span>
+      </a>
+
+      <ul class="nav-links" role="list">
+        <li><a href="about/index.html" class="nav-link">ПРО НАС</a></li>
+        <li><a href="restaurants/index.html" class="nav-link">РЕСТОРАНИ</a></li>
+        <li><a href="hotels/index.html" class="nav-link">ГОТЕЛІ</a></li>
+        <li><a href="spa/index.html" class="nav-link">SPA</a></li>
+        <li><a href="team/index.html" class="nav-link">КОМАНДА</a></li>
+        <li><a href="vacancies/index.html" class="nav-link">ВАКАНСІЇ</a></li>
+        <li><a href="blog/index.html" class="nav-link">БЛОГ</a></li>
+        <li><a href="contacts/index.html" class="nav-link">КОНТАКТИ</a></li>
+        <li><a href="#" class="nav-link" style="color: var(--color-accent);">UA</a> <span style="color:var(--color-text-tertiary)">|</span> <a href="#" class="nav-link">EN</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="tel:+380577000000" class="nav-cta" id="nav-book-btn">Забронювати</a>
+        <button class="hamburger" id="hamburger-btn" aria-label="Відкрити меню" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <ul role="list">
+      <li><a href="about/index.html" class="mobile-nav-link">ПРО НАС</a></li>
+      <li><a href="restaurants/index.html" class="mobile-nav-link">РЕСТОРАНИ</a></li>
+      <li><a href="hotels/index.html" class="mobile-nav-link">ГОТЕЛІ</a></li>
+      <li><a href="spa/index.html" class="mobile-nav-link">SPA</a></li>
+      <li><a href="team/index.html" class="mobile-nav-link">КОМАНДА</a></li>
+      <li><a href="vacancies/index.html" class="mobile-nav-link">ВАКАНСІЇ</a></li>
+      <li><a href="blog/index.html" class="mobile-nav-link">БЛОГ</a></li>
+      <li><a href="contacts/index.html" class="mobile-nav-link">КОНТАКТИ</a></li>
+      <li><a href="#" class="mobile-nav-link" style="display:inline-block; margin-right: 10px;">UA</a> <a href="#" class="mobile-nav-link" style="display:inline-block; color:var(--color-text-tertiary)">EN</a></li>
+    </ul>
+  </div>
+
+  <main>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero" aria-labelledby="hero-heading">
+      <div class="hero-bg">
+        <img src="hero-bg.png" alt="" aria-hidden="true" class="hero-img">
+        <div class="hero-overlay"></div>
+      </div>
+
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="badge-dot" aria-hidden="true"></span>
+          Буковель · Одеса · Яремче
+        </div>
+        <h1 class="hero-title" id="hero-heading">
+          Новий рівень<br>
+          <em>відпочинку</em><br>
+          в Україні
+        </h1>
+        <p class="hero-subtitle">
+          CARTEL — це великий холдинг, який об’єднує готелі в Буковелі,<br>
+          SPA-комплекс VODA club, «Баньку на дровах» та 19 ресторанів.
+        </p>
+        <div class="hero-actions">
+          <a href="#venues" class="btn btn-primary" id="hero-explore-btn">Наші проекти</a>
+        </div>
+      </div>
+
+      <div class="hero-scroll-hint" aria-hidden="true">
+        <div class="scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <section class="stats" aria-label="Ключові факти про Cartel">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <span class="stat-number" id="stat-venues">19</span>
+            <span class="stat-label">ресторанів</span>
+          </div>
+          <div class="stat-divider" aria-hidden="true"></div>
+          <div class="stat-item">
+            <span class="stat-number" id="stat-years">17</span>
+            <span class="stat-label">років досвіду</span>
+          </div>
+          <div class="stat-divider" aria-hidden="true"></div>
+          <div class="stat-item">
+            <span class="stat-number" id="stat-guests">3</span>
+            <span class="stat-label">міста України</span>
+          </div>
+          <div class="stat-divider" aria-hidden="true"></div>
+          <div class="stat-item">
+            <span class="stat-number" id="stat-events">200+</span>
+            <span class="stat-label">подій на рік</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Venues Grid -->
+    <section class="venues" id="venues" aria-labelledby="venues-heading">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow">Наші заклади</p>
+          <h2 class="section-title" id="venues-heading">Всесвіт Cartel</h2>
+          <p class="section-subtitle">Кожен заклад — окремий світ з власним характером, кухнею та атмосферою</p>
+        </div>
+
+        <div class="venues-grid">
+
+          <!-- Card 1: Restaurants -->
+          <article class="venue-card venue-card--large" id="venue-cartel-main" onclick="window.location.href='restaurants/index.html'">
+            <div class="venue-card-bg" style="background: linear-gradient(135deg, #1a0a00 0%, #3d1a00 50%, #0a0a0a 100%);">
+              <div class="venue-card-pattern restaurant-pattern"></div>
+            </div>
+            <div class="venue-card-content">
+              <div class="venue-tag">Гастрономія</div>
+              <h3 class="venue-name">Ресторани CARTEL</h3>
+              <p class="venue-desc">Сім’я ресторанів єднає найкращі заклади харчування у ТК «Буковель», Одесі та Яремче. Заклади української, італійської, азійської та американської кухні.</p>
+              <div class="venue-meta">
+                <span class="venue-hours">19 ресторанів</span>
+                <a href="restaurants/index.html" class="venue-link" id="link-cartel">Детальніше →</a>
+              </div>
+            </div>
+            <div class="venue-card-icon" aria-hidden="true">🍽</div>
+          </article>
+
+          <!-- Card 2: VODA Club -->
+          <article class="venue-card" id="venue-voda" onclick="window.location.href='voda-club/index.html'">
+            <div class="venue-card-bg" style="background: linear-gradient(135deg, #001a2e 0%, #003366 50%, #000d1a 100%);">
+              <div class="venue-card-pattern water-pattern"></div>
+            </div>
+            <div class="venue-card-content">
+              <div class="venue-tag">Відпочинок</div>
+              <h3 class="venue-name">VODA Club</h3>
+              <p class="venue-desc">Найвисокогірніший пляж країни. Всесезонний басейн, джакузі та pool-party біля озера Молодості.</p>
+              <div class="venue-meta">
+                <span class="venue-hours">Буковель</span>
+                <a href="voda-club/index.html" class="venue-link" id="link-voda">Детальніше →</a>
+              </div>
+            </div>
+            <div class="venue-card-icon" aria-hidden="true">🌊</div>
+          </article>
+
+          <!-- Card 3: SPA -->
+          <article class="venue-card" id="venue-spa" onclick="window.location.href='spa/index.html'">
+            <div class="venue-card-bg" style="background: linear-gradient(135deg, #0a1a0a 0%, #1a3a1a 50%, #050a05 100%);">
+              <div class="venue-card-pattern spa-pattern"></div>
+            </div>
+            <div class="venue-card-content">
+              <div class="venue-tag">Релакс</div>
+              <h3 class="venue-name">SPA-комплекс</h3>
+              <p class="venue-desc">Римська парна, середземноморська сауна, соляна кімната та професійні SPA-процедури.</p>
+              <div class="venue-meta">
+                <span class="venue-hours">Буковель</span>
+                <a href="spa/index.html" class="venue-link" id="link-spa">Детальніше →</a>
+              </div>
+            </div>
+            <div class="venue-card-icon" aria-hidden="true">✦</div>
+          </article>
+
+          <!-- Card 4: Баня -->
+          <article class="venue-card" id="venue-banya" onclick="window.location.href='banya/index.html'">
+            <div class="venue-card-bg" style="background: linear-gradient(135deg, #1a0e00 0%, #3d2200 50%, #0f0700 100%);">
+              <div class="venue-card-pattern wood-pattern"></div>
+            </div>
+            <div class="venue-card-content">
+              <div class="venue-tag">Традиції</div>
+              <h3 class="venue-name">Банька на дровах</h3>
+              <p class="venue-desc">Автентична банька з дубовими віниками, фітокімнатою та джерельними купелями.</p>
+              <div class="venue-meta">
+                <span class="venue-hours">Буковель</span>
+                <a href="banya/index.html" class="venue-link" id="link-banya">Детальніше →</a>
+              </div>
+            </div>
+            <div class="venue-card-icon" aria-hidden="true">🔥</div>
+          </article>
+
+          <!-- Card 5: Fast Food -->
+          <article class="venue-card venue-card--wide" id="venue-fastfood" onclick="window.location.href='fast-food/index.html'">
+            <div class="venue-card-bg" style="background: linear-gradient(135deg, #1a0000 0%, #330000 40%, #0a0000 100%);">
+              <div class="venue-card-pattern dots-pattern"></div>
+            </div>
+            <div class="venue-card-content">
+              <div class="venue-tag">Швидко та смачно</div>
+              <h3 class="venue-name">Eat'n'Go!</h3>
+              <p class="venue-desc">Мережа закладів швидкого харчування на схилах Буковелю. Бургери, паніні, гарячі супи та глінтвейн.</p>
+              <div class="venue-meta">
+                <span class="venue-hours">Гірськолижні траси</span>
+                <a href="fast-food/index.html" class="venue-link" id="link-fastfood">Детальніше →</a>
+              </div>
+            </div>
+            <div class="venue-card-icon" aria-hidden="true">🍔</div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Section: Philosophy -->
+    <section class="philosophy" aria-labelledby="philosophy-heading">
+      <div class="container">
+        <div class="philosophy-inner">
+          <div class="philosophy-text">
+            <p class="section-eyebrow">Наша філософія</p>
+            <h2 class="section-title" id="philosophy-heading">Більше ніж<br>просто заклад</h2>
+            <p class="philosophy-body">
+              Cartel — це не просто холдинг. Це екосистема вражень, де кожна деталь продумана до дрібниць. Від першого ковтку кави до останнього танцю — ми створюємо моменти, які запам'ятовуються.
+            </p>
+            <div class="philosophy-features">
+              <div class="feature-item">
+                <div class="feature-icon" aria-hidden="true">✦</div>
+                <div>
+                  <h3 class="feature-title">Авторська кухня</h3>
+                  <p class="feature-desc">Шеф-кухарі з міжнародним досвідом</p>
+                </div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-icon" aria-hidden="true">✦</div>
+                <div>
+                  <h3 class="feature-title">Преміальний сервіс</h3>
+                  <p class="feature-desc">Персональний підхід до кожного гостя</p>
+                </div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-icon" aria-hidden="true">✦</div>
+                <div>
+                  <h3 class="feature-title">Унікальна атмосфера</h3>
+                  <p class="feature-desc">Інтер'єри від провідних дизайнерів</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="philosophy-visual" aria-hidden="true">
+            <div class="visual-card visual-card-1">
+              <div class="visual-card-inner">
+                <span class="visual-number">01</span>
+                <span class="visual-label">Ресторани</span>
+              </div>
+            </div>
+            <div class="visual-card visual-card-2">
+              <div class="visual-card-inner">
+                <span class="visual-number">19</span>
+                <span class="visual-label">Закладів</span>
+              </div>
+            </div>
+            <div class="visual-card visual-card-3">
+              <div class="visual-card-inner">
+                <span class="visual-emoji">★</span>
+                <span class="visual-label">Преміум</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Events Section -->
+    <section class="events" id="events" aria-labelledby="events-heading">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow">Афіша</p>
+          <h2 class="section-title" id="events-heading">Найближчі події</h2>
+        </div>
+
+        <div class="events-list">
+
+          <article class="event-item" id="event-1">
+            <div class="event-date">
+              <span class="event-day">15</span>
+              <span class="event-month">Вер</span>
+            </div>
+            <div class="event-info">
+              <div class="event-tags">
+                <span class="event-tag">VODA Club</span>
+                <span class="event-tag event-tag--type">Вечірка</span>
+              </div>
+              <h3 class="event-title">Night of Jazz & Blues</h3>
+              <p class="event-details">Живий виступ • 22:00 — 04:00 • Від 300 грн</p>
+            </div>
+            <a href="#" class="event-cta" id="event-1-btn">Квитки</a>
+          </article>
+
+          <article class="event-item" id="event-2">
+            <div class="event-date">
+              <span class="event-day">20</span>
+              <span class="event-month">Вер</span>
+            </div>
+            <div class="event-info">
+              <div class="event-tags">
+                <span class="event-tag">Cartel</span>
+                <span class="event-tag event-tag--type">Гастрономія</span>
+              </div>
+              <h3 class="event-title">Chef's Table: Сезонне меню</h3>
+              <p class="event-details">8 страв • 19:00 — 23:00 • 1200 грн/особа</p>
+            </div>
+            <a href="#" class="event-cta" id="event-2-btn">Забронювати</a>
+          </article>
+
+          <article class="event-item" id="event-3">
+            <div class="event-date">
+              <span class="event-day">27</span>
+              <span class="event-month">Вер</span>
+            </div>
+            <div class="event-info">
+              <div class="event-tags">
+                <span class="event-tag">SPA</span>
+                <span class="event-tag event-tag--type">Wellbeing</span>
+              </div>
+              <h3 class="event-title">Spa Weekend: Повне оновлення</h3>
+              <p class="event-details">Весь день • 10:00 — 21:00 • Від 800 грн</p>
+            </div>
+            <a href="#" class="event-cta" id="event-3-btn">Деталі</a>
+          </article>
+
+        </div>
+
+        <div class="events-footer">
+          <a href="#" class="btn btn-secondary" id="all-events-btn">Усі події →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Booking / CTA Section -->
+    <section class="booking" id="booking" aria-labelledby="booking-heading">
+      <div class="container">
+        <div class="booking-inner">
+          <div class="booking-text">
+            <p class="section-eyebrow">Бронювання</p>
+            <h2 class="section-title" id="booking-heading">Зарезервуйте<br>свій вечір</h2>
+            <p class="booking-subtitle">Столик для вас готовий. Нам залишається лише дізнатись, коли.</p>
+          </div>
+
+          <form class="booking-form" id="booking-form" novalidate aria-label="Форма бронювання">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="book-venue" class="form-label">Заклад</label>
+                <select id="book-venue" name="venue" class="form-select" required>
+                  <option value="">Оберіть заклад</option>
+                  <option value="cartel">Cartel Restaurant</option>
+                  <option value="voda">VODA Club</option>
+                  <option value="spa">Cartel SPA</option>
+                  <option value="banya">Банька на дровах</option>
+                  <option value="fast">Cartel Fast</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="book-date" class="form-label">Дата</label>
+                <input type="date" id="book-date" name="date" class="form-input" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="book-time" class="form-label">Час</label>
+                <input type="time" id="book-time" name="time" class="form-input" required>
+              </div>
+              <div class="form-group">
+                <label for="book-guests" class="form-label">Гостей</label>
+                <select id="book-guests" name="guests" class="form-select" required>
+                  <option value="">Кількість</option>
+                  <option value="1">1 особа</option>
+                  <option value="2">2 особи</option>
+                  <option value="3-4">3–4 особи</option>
+                  <option value="5-8">5–8 осіб</option>
+                  <option value="9+">9+ осіб</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="book-name" class="form-label">Ваше ім'я</label>
+              <input type="text" id="book-name" name="name" class="form-input" placeholder="Олексій Шевченко" required autocomplete="name">
+            </div>
+            <div class="form-group">
+              <label for="book-phone" class="form-label">Телефон</label>
+              <input type="tel" id="book-phone" name="phone" class="form-input" placeholder="+38 (0XX) XXX-XX-XX" required autocomplete="tel">
+            </div>
+            <button type="submit" class="btn btn-primary btn-full" id="submit-booking">Підтвердити бронювання</button>
+            <p class="form-note">Ми зв'яжемося з вами протягом 15 хвилин для підтвердження</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contacts -->
+    <section class="contacts" id="contacts" aria-labelledby="contacts-heading">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow">Контакти</p>
+          <h2 class="section-title" id="contacts-heading">Знайдіть нас</h2>
+        </div>
+
+        <div class="contacts-grid">
+          <div class="contact-card" id="contact-phone">
+            <div class="contact-icon" aria-hidden="true">📞</div>
+            <h3 class="contact-title">Телефон</h3>
+            <a href="tel:+380577000000" class="contact-value">+38 (057) 700-00-00</a>
+            <p class="contact-note">Щодня 10:00 – 23:00</p>
+          </div>
+          <div class="contact-card" id="contact-address">
+            <div class="contact-icon" aria-hidden="true">📍</div>
+            <h3 class="contact-title">Адреса</h3>
+            <p class="contact-value">Харків, вул. Сумська, 47</p>
+            <a href="#" class="contact-note">Відкрити на картах →</a>
+          </div>
+          <div class="contact-card" id="contact-social">
+            <div class="contact-icon" aria-hidden="true">📲</div>
+            <h3 class="contact-title">Соцмережі</h3>
+            <div class="social-links">
+              <a href="#" class="social-link" id="social-instagram" aria-label="Instagram Cartel">Instagram</a>
+              <a href="#" class="social-link" id="social-facebook" aria-label="Facebook Cartel">Facebook</a>
+              <a href="#" class="social-link" id="social-telegram" aria-label="Telegram Cartel">Telegram</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <span class="logo-text">CARTEL</span>
+          <p class="footer-tagline">Холдинг гастрономії та розваг</p>
+        </div>
+        <nav class="footer-nav" aria-label="Навігація у підвалі">
+          <div class="footer-nav-col">
+            <h4 class="footer-nav-title">Проекти</h4>
+            <ul role="list">
+              <li><a href="restaurants/index.html">Ресторани</a></li>
+              <li><a href="voda-club/index.html">VODA Club</a></li>
+              <li><a href="spa/index.html">SPA-комплекс</a></li>
+              <li><a href="banya/index.html">Банька на дровах</a></li>
+              <li><a href="fast-food/index.html">Фаст-фуд Eat'n'Go!</a></li>
+            </ul>
+          </div>
+          <div class="footer-nav-col">
+            <h4 class="footer-nav-title">Інформація</h4>
+            <ul role="list">
+              <li><a href="#">Команда</a></li>
+              <li><a href="#">Вакансії</a></li>
+              <li><a href="#">Блог</a></li>
+              <li><a href="contacts/index.html">Контакти</a></li>
+            </ul>
+          </div>
+          <div class="footer-nav-col">
+            <h4 class="footer-nav-title">Партнери</h4>
+            <ul role="list">
+              <li><a href="http://bukovel.com/" target="_blank">ТК «Буковель»</a></li>
+              <li><a href="https://www.carlsberg.com/" target="_blank">Carlsberg</a></li>
+              <li><a href="http://www.jackdaniels.com/" target="_blank">Jack Daniel's</a></li>
+              <li><a href="http://www.jager.com/" target="_blank">Jagermeister</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2004–2026 Cartel Holding. Усі права захищено.</p>
+        <p class="footer-copy">🇺🇦 Зроблено в Україні (Буковель · Одеса · Яремче)</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

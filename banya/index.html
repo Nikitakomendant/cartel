@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="uk" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Банька на дровах — Cartel Holding</title>
+  <meta name="description" content="Cartel Банька на дровах — автентична руська лазня в Буковелі. Сосновий зруб, дубовий піл, корінні пари та справжній відпочинок у карпатських традиціях.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    /* Banya Hero — warm dark wood / ember tones */
+    .page-hero {
+      position: relative; min-height: 70vh;
+      display: flex; align-items: flex-end; overflow: hidden;
+    }
+    .page-hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 30% 70%, rgba(160,60,10,0.35) 0%, transparent 55%),
+        radial-gradient(ellipse at 75% 30%, rgba(100,30,5,0.25) 0%, transparent 50%),
+        linear-gradient(155deg, #100500 0%, #1f0800 40%, #150400 65%, #080200 100%);
+    }
+    .page-hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(10,3,0,0.95) 0%, rgba(10,3,0,0.45) 50%, transparent 100%);
+    }
+    .page-hero-content {
+      position: relative; z-index: 1;
+      padding: calc(var(--nav-height) + var(--space-20)) var(--space-6) var(--space-20);
+      max-width: var(--container-max); margin: 0 auto; width: 100%;
+    }
+    .page-breadcrumb {
+      font-size: var(--text-xs); font-weight: 500; letter-spacing: 0.12em;
+      text-transform: uppercase; color: #ff8c42;
+      margin-bottom: var(--space-4); display: flex; align-items: center; gap: var(--space-2);
+    }
+    .page-breadcrumb a { color: rgba(255,140,66,0.6); transition: color var(--duration-fast); }
+    .page-breadcrumb a:hover { color: #ff8c42; }
+    .page-hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.5rem, 8vw, 5.5rem);
+      font-weight: 400; letter-spacing: -0.03em; line-height: 1.05;
+      color: var(--color-text-primary); margin-bottom: var(--space-6);
+    }
+    .page-hero-title em { font-style: italic; color: #ff8c42; }
+    .page-hero-subtitle {
+      font-size: var(--text-lg); font-weight: 300;
+      color: var(--color-text-secondary); max-width: 600px; line-height: 1.6;
+    }
+    .hero-meta {
+      display: flex; gap: var(--space-8); margin-top: var(--space-10); flex-wrap: wrap;
+    }
+    .hero-meta-item { display: flex; flex-direction: column; gap: 4px; }
+    .hero-meta-label {
+      font-size: var(--text-xs); font-weight: 500; letter-spacing: 0.1em;
+      text-transform: uppercase; color: rgba(255,140,66,0.6);
+    }
+    .hero-meta-value { font-size: var(--text-xl); font-weight: 600; color: #fff; }
+
+    /* Banyas listing */
+    .banyas-section { padding: var(--space-32) 0; background: var(--color-bg-primary); }
+    .banyas-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-6); margin-top: var(--space-12);
+    }
+    .banya-card {
+      background: var(--color-bg-elevated);
+      border: 1px solid var(--color-separator); border-radius: var(--radius-xl);
+      overflow: hidden;
+      transition: transform var(--duration-slow) var(--ease-spring), border-color var(--duration-slow);
+    }
+    .banya-card:hover { transform: translateY(-6px); border-color: rgba(255,140,66,0.35); }
+    .banya-card-image {
+      height: 180px; display: flex; align-items: center; justify-content: center;
+      font-size: 4rem;
+    }
+    .bi-1 { background: linear-gradient(135deg, #1f0800, #3d1200); }
+    .bi-2 { background: linear-gradient(135deg, #1a0500, #330e00); }
+    .bi-3 { background: linear-gradient(135deg, #200900, #451500); }
+    .banya-card-body { padding: var(--space-6); }
+    .banya-card-tag {
+      font-size: var(--text-xs); font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: #ff8c42; margin-bottom: var(--space-3);
+    }
+    .banya-card-name {
+      font-family: var(--font-serif); font-size: var(--text-xl);
+      font-weight: 400; color: var(--color-text-primary); margin-bottom: var(--space-3);
+    }
+    .banya-card-desc {
+      font-size: var(--text-sm); color: var(--color-text-secondary);
+      line-height: 1.7; margin-bottom: var(--space-5);
+    }
+    .banya-card-capacity {
+      font-size: var(--text-xs); color: var(--color-text-tertiary);
+      border-top: 1px solid var(--color-separator); padding-top: var(--space-3);
+    }
+
+    /* Rituals */
+    .rituals-section { padding: var(--space-32) 0; background: var(--color-bg-secondary); }
+    .rituals-list {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-5); margin-top: var(--space-12);
+    }
+    .ritual-item {
+      display: flex; align-items: flex-start; gap: var(--space-4);
+      padding: var(--space-6);
+      background: var(--color-bg-elevated);
+      border: 1px solid var(--color-separator); border-radius: var(--radius-lg);
+      transition: border-color var(--duration-fast);
+    }
+    .ritual-item:hover { border-color: rgba(255,140,66,0.3); }
+    .ritual-num {
+      font-size: var(--text-3xl); font-weight: 800; color: rgba(255,140,66,0.25);
+      font-variant-numeric: tabular-nums; flex-shrink: 0; line-height: 1;
+    }
+    .ritual-info { flex: 1; }
+    .ritual-name {
+      font-size: var(--text-base); font-weight: 600;
+      color: var(--color-text-primary); margin-bottom: var(--space-2);
+    }
+    .ritual-desc { font-size: var(--text-sm); color: var(--color-text-secondary); line-height: 1.6; }
+
+    @media (max-width: 900px) {
+      .banyas-grid { grid-template-columns: 1fr 1fr; }
+      .rituals-list { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .banyas-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav" id="main-nav" role="navigation" aria-label="Головне меню">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo" aria-label="Cartel — на головну">
+        <span class="logo-text">CARTEL</span>
+      </a>
+      <ul class="nav-links" role="list">
+        <li><a href="../about/index.html" class="nav-link">ПРО НАС</a></li>
+        <li><a href="../restaurants/index.html" class="nav-link">РЕСТОРАНИ</a></li>
+        <li><a href="../hotels/index.html" class="nav-link">ГОТЕЛІ</a></li>
+        <li><a href="../spa/index.html" class="nav-link">SPA</a></li>
+        <li><a href="../team/index.html" class="nav-link">КОМАНДА</a></li>
+        <li><a href="../vacancies/index.html" class="nav-link">ВАКАНСІЇ</a></li>
+        <li><a href="../blog/index.html" class="nav-link">БЛОГ</a></li>
+        <li><a href="../contacts/index.html" class="nav-link">КОНТАКТИ</a></li>
+        <li><a href="#" class="nav-link" style="color: var(--color-accent);">UA</a> <span style="color:var(--color-text-tertiary)">|</span> <a href="#" class="nav-link">EN</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="tel:+380673441099" class="nav-cta" id="nav-book-btn">Забронювати</a>
+        <button class="hamburger" id="hamburger-btn" aria-label="Відкрити меню" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <ul role="list">
+      <li><a href="../about/index.html" class="mobile-nav-link">ПРО НАС</a></li>
+      <li><a href="../restaurants/index.html" class="mobile-nav-link">РЕСТОРАНИ</a></li>
+      <li><a href="../hotels/index.html" class="mobile-nav-link">ГОТЕЛІ</a></li>
+      <li><a href="../spa/index.html" class="mobile-nav-link">SPA</a></li>
+      <li><a href="../team/index.html" class="mobile-nav-link">КОМАНДА</a></li>
+      <li><a href="../vacancies/index.html" class="mobile-nav-link">ВАКАНСІЇ</a></li>
+      <li><a href="../blog/index.html" class="mobile-nav-link">БЛОГ</a></li>
+      <li><a href="../contacts/index.html" class="mobile-nav-link">КОНТАКТИ</a></li>
+      <li><a href="#" class="mobile-nav-link" style="display:inline-block; margin-right: 10px;">UA</a> <a href="#" class="mobile-nav-link" style="display:inline-block; color:var(--color-text-tertiary)">EN</a></li>
+    </ul>
+  </div>
+
+  <main>
+    <section class="page-hero" aria-labelledby="banya-hero-heading">
+      <div class="page-hero-bg"></div>
+      <div class="page-hero-overlay"></div>
+      <div class="page-hero-content">
+        <div class="page-breadcrumb">
+          <a href="../index.html">Cartel</a><span>›</span><span>Банька на дровах</span>
+        </div>
+        <h1 class="page-hero-title" id="banya-hero-heading">
+          Вогонь.<br><em>Пара.</em><br>Карпатський дух.
+        </h1>
+        <p class="page-hero-subtitle">
+          Три автентичні бані зі зрубу сосни, дубові полиці та справжня пара на карпатських травах. Традиція, якій сотні років — у сучасному преміальному форматі Cartel.
+        </p>
+        <div class="hero-meta">
+          <div class="hero-meta-item">
+            <span class="hero-meta-label">Банень</span>
+            <span class="hero-meta-value">3 будиночки</span>
+          </div>
+          <div class="hero-meta-item">
+            <span class="hero-meta-label">Місткість</span>
+            <span class="hero-meta-value">до 12 осіб</span>
+          </div>
+          <div class="hero-meta-item">
+            <span class="hero-meta-label">Мінімум</span>
+            <span class="hero-meta-value">2 години</span>
+          </div>
+          <div class="hero-meta-item">
+            <span class="hero-meta-label">Цілодобово</span>
+            <span class="hero-meta-value">24/7</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Banya cabins -->
+    <section class="banyas-section" aria-labelledby="banyas-heading">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow">Вибір</p>
+          <h2 class="section-title" id="banyas-heading">Три унікальні лазні</h2>
+          <p class="section-subtitle">Кожна — окремий простір для відновлення та компанії</p>
+        </div>
+        <div class="banyas-grid">
+          <article class="banya-card reveal" id="banya-cedar">
+            <div class="banya-card-image bi-1">🌲</div>
+            <div class="banya-card-body">
+              <div class="banya-card-tag">Преміум</div>
+              <h3 class="banya-card-name">Кедрова лазня</h3>
+              <p class="banya-card-desc">Будиночок зі справжнього кедра з душою та відкритою верандою. Запах кедру та дубових гілок заповнює кожен куточок. Своя купіль зі свіжою гірською водою.</p>
+              <div class="banya-card-capacity">👥 до 8 осіб · 4 год від 3 200 грн</div>
+            </div>
+          </article>
+          <article class="banya-card reveal" id="banya-pine">
+            <div class="banya-card-image bi-2">🔥</div>
+            <div class="banya-card-body">
+              <div class="banya-card-tag">Класика</div>
+              <h3 class="banya-card-name">Соснова банька</h3>
+              <p class="banya-card-desc">Найзатишніший формат для невеликих компаній. Сосновий зруб, піч на дровах та зимовий сад для відпочинку між запарками з узваром та медом.</p>
+              <div class="banya-card-capacity">👥 до 5 осіб · 4 год від 2 400 грн</div>
+            </div>
+          </article>
+          <article class="banya-card reveal" id="banya-royal">
+            <div class="banya-card-image bi-3">👑</div>
+            <div class="banya-card-body">
+              <div class="banya-card-tag">VIP Royal</div>
+              <h3 class="banya-card-name">Королівська лазня</h3>
+              <p class="banya-card-desc">Найбільший і найрозкішніший простір: 200 м², пряма купіль 6×4 м у лісі, відкрита тераса з каміном, кімната відпочинку та персональний банщик.</p>
+              <div class="banya-card-capacity">👥 до 12 осіб · 4 год від 5 800 грн</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Rituals -->
+    <section class="rituals-section" aria-labelledby="rituals-heading">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow">Традиції</p>
+          <h2 class="section-title" id="rituals-heading">Банний ритуал Cartel</h2>
+          <p class="section-subtitle">Правильна послідовність — запорука справжнього відновлення</p>
+        </div>
+        <div class="rituals-list">
+          <div class="ritual-item reveal" id="ritual-1">
+            <div class="ritual-num">01</div>
+            <div class="ritual-info">
+              <div class="ritual-name">Розігрів та підготовка</div>
+              <div class="ritual-desc">Повільний прогрів тіла в лазні протягом 10–15 хвилин при температурі 70–80°C для адаптації серцево-судинної системи та розкриття пор.</div>
+            </div>
+          </div>
+          <div class="ritual-item reveal" id="ritual-2">
+            <div class="ritual-num">02</div>
+            <div class="ritual-info">
+              <div class="ritual-name">Корінний пар з травами</div>
+              <div class="ritual-desc">Наш банщик подає пар з арома-настоями карпатських трав: чебрець, меліса, евкаліпт та ялиця. Пар піднімається до стелі та огортає тіло.</div>
+            </div>
+          </div>
+          <div class="ritual-item reveal" id="ritual-3">
+            <div class="ritual-num">03</div>
+            <div class="ritual-info">
+              <div class="ritual-name">Парення дубовими гілками</div>
+              <div class="ritual-desc">Традиційний масаж березово-дубовими гілками у два рухи. Покращує кровообіг, очищає шкіру та знімає м'язову напругу краще будь-якого масажу.</div>
+            </div>
+          </div>
+          <div class="ritual-item reveal" id="ritual-4">
+            <div class="ritual-num">04</div>
+            <div class="ritual-info">
+              <div class="ritual-name">Охолодження в купелі</div>
+              <div class="ritual-desc">Стрибок у холодну купіль або під холодний душ після пару — класичний контраст, що гартує судини та дає потужний заряд бадьорості.</div>
+            </div>
+          </div>
+          <div class="ritual-item reveal" id="ritual-5">
+            <div class="ritual-num">05</div>
+            <div class="ritual-info">
+              <div class="ritual-name">Відпочинок та чай</div>
+              <div class="ritual-desc">Між запарками — відпочинок у передбаннику з трав'яним чаєм, медом та сухофруктами. Дозволяємо серцю сповільнитися, а тілу — насолодитися теплом.</div>
+            </div>
+          </div>
+          <div class="ritual-item reveal" id="ritual-6">
+            <div class="ritual-num">06</div>
+            <div class="ritual-info">
+              <div class="ritual-name">Медовий скраб та зволоження</div>
+              <div class="ritual-desc">Фінальний ритуал — нанесення карпатського меду та солі на розігріте тіло для глибокого живлення шкіри. Завершуємо сесію фінською сауною.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="booking" aria-labelledby="banya-booking-heading">
+      <div class="container">
+        <div class="booking-inner">
+          <div class="booking-text">
+            <p class="section-eyebrow">Бронювання</p>
+            <h2 class="section-title" id="banya-booking-heading">Забронюйте<br>свою баньку</h2>
+            <p class="booking-subtitle">Лазня прогрівається за 2 години. Бронюйте завчасно.</p>
+          </div>
+          <form class="booking-form" id="banya-booking-form" novalidate aria-label="Форма бронювання баньки">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="banya-select" class="form-label">Лазня</label>
+                <select id="banya-select" name="banya" class="form-select" required>
+                  <option value="">Оберіть баньку</option>
+                  <option value="cedar">Кедрова лазня</option>
+                  <option value="pine">Соснова банька</option>
+                  <option value="royal">Королівська лазня VIP</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="banya-date" class="form-label">Дата</label>
+                <input type="date" id="banya-date" name="date" class="form-input" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="banya-time" class="form-label">Час початку</label>
+                <input type="time" id="banya-time" name="time" class="form-input" required>
+              </div>
+              <div class="form-group">
+                <label for="banya-duration" class="form-label">Тривалість</label>
+                <select id="banya-duration" name="duration" class="form-select" required>
+                  <option value="">Оберіть</option>
+                  <option value="2h">2 години</option>
+                  <option value="4h">4 години</option>
+                  <option value="6h">6 годин</option>
+                  <option value="night">Нічна (8 год)</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="banya-name" class="form-label">Ваше ім'я</label>
+              <input type="text" id="banya-name" name="name" class="form-input" placeholder="Олексій Шевченко" required autocomplete="name">
+            </div>
+            <div class="form-group">
+              <label for="banya-phone" class="form-label">Телефон</label>
+              <input type="tel" id="banya-phone" name="phone" class="form-input" placeholder="+38 (0XX) XXX-XX-XX" required autocomplete="tel">
+            </div>
+            <button type="submit" class="btn btn-primary btn-full" id="submit-banya-booking">Забронювати баньку</button>
+            <p class="form-note">Будемо чекати вас. Лазня буде готова!</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <span class="logo-text">CARTEL</span>
+          <p class="footer-tagline">Холдинг гастрономії та розваг</p>
+        </div>
+        <nav class="footer-nav" aria-label="Навігація у підвалі">
+          <div class="footer-nav-col">
+            <h4 class="footer-nav-title">Проекти</h4>
+            <ul role="list">
+              <li><a href="../restaurants/index.html">Ресторани</a></li>
+              <li><a href="../voda-club/index.html">VODA Club</a></li>
+              <li><a href="../spa/index.html">SPA-комплекс</a></li>
+              <li><a href="../banya/index.html">Банька на дровах</a></li>
+              <li><a href="../fast-food/index.html">Фаст-фуд Eat'n'Go!</a></li>
+            </ul>
+          </div>
+          <div class="footer-nav-col">
+            <h4 class="footer-nav-title">Інформація</h4>
+            <ul role="list">
+              <li><a href="#">Команда</a></li>
+              <li><a href="#">Вакансії</a></li>
+              <li><a href="#">Блог</a></li>
+              <li><a href="../contacts/index.html">Контакти</a></li>
+            </ul>
+          </div>
+          <div class="footer-nav-col">
+            <h4 class="footer-nav-title">Партнери</h4>
+            <ul role="list">
+              <li><a href="http://bukovel.com/" target="_blank">ТК «Буковель»</a></li>
+              <li><a href="https://www.carlsberg.com/" target="_blank">Carlsberg</a></li>
+              <li><a href="http://www.jackdaniels.com/" target="_blank">Jack Daniel's</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2004–2026 Cartel Holding. Усі права захищено.</p>
+        <p class="footer-copy">🇺🇦 Зроблено в Україні (Буковель · Одеса · Яремче)</p>
+      </div>
+    </div>
+  </footer>
+  <script src="../script.js"></script>
+</body>
+</html>

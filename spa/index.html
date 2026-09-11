@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="uk" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SPA-комплекс — Cartel Holding</title>
+  <meta name="description" content="Cartel SPA — преміальний спа-комплекс у Буковелі. Хаммам, флоатинг, масаж, термальні купелі та повний релакс після гірськолижного дня.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    /* SPA Hero — warm stone/jade zen palette */
+    .page-hero {
+      position: relative;
+      min-height: 70vh;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+    }
+    .page-hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 70%, rgba(100,80,40,0.3) 0%, transparent 55%),
+        radial-gradient(ellipse at 75% 25%, rgba(80,120,80,0.2) 0%, transparent 50%),
+        linear-gradient(155deg, #0a0800 0%, #1a1000 35%, #100c00 65%, #080600 100%);
+    }
+    .page-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(8,6,0,0.95) 0%, rgba(8,6,0,0.4) 50%, transparent 100%);
+    }
+    .page-hero-content {
+      position: relative; z-index: 1;
+      padding: calc(var(--nav-height) + var(--space-20)) var(--space-6) var(--space-20);
+      max-width: var(--container-max); margin: 0 auto; width: 100%;
+    }
+    .page-breadcrumb {
+      font-size: var(--text-xs); font-weight: 500; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--color-accent);
+      margin-bottom: var(--space-4); display: flex; align-items: center; gap: var(--space-2);
+    }
+    .page-breadcrumb a { color: rgba(201,168,76,0.6); transition: color var(--duration-fast); }
+    .page-breadcrumb a:hover { color: var(--color-accent); }
+    .page-hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.5rem, 8vw, 5.5rem);
+      font-weight: 400; letter-spacing: -0.03em; line-height: 1.05;
+      color: var(--color-text-primary); margin-bottom: var(--space-6);
+    }
+    .page-hero-title em { font-style: italic; color: var(--color-accent); }
+    .page-hero-subtitle {
+      font-size: var(--text-lg); font-weight: 300;
+      color: var(--color-text-secondary); max-width: 600px; line-height: 1.6;
+    }
+    .hero-meta {
+      display: flex; gap: var(--space-8); margin-top: var(--space-10); flex-wrap: wrap;
+    }
+    .hero-meta-item { display: flex; flex-direction: column; gap: 4px; }
+    .hero-meta-label {
+      font-size: var(--text-xs); font-weight: 500; letter-spacing: 0.1em;
+      text-transform: uppercase; color: rgba(201,168,76,0.6);
+    }
+    .hero-meta-value { font-size: var(--text-xl); font-weight: 600; color: #fff; }
+
+    /* Services grid */
+    .services-section {
+      padding: var(--space-32) 0; background: var(--color-bg-primary);
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-6);
+      margin-top: var(--space-12);
+    }
+    .service-card {
+      display: flex;
+      gap: var(--space-6);
+      background: var(--color-bg-elevated);
+      border: 1px solid var(--color-separator);
+      border-radius: var(--radius-xl);
+      padding: var(--space-8);
+      align-items: flex-start;
+      transition: transform var(--duration-slow) var(--ease-spring), border-color var(--duration-slow);
+    }
+    .service-card:hover { transform: translateY(-4px); border-color: rgba(201,168,76,0.3); }
+    .service-icon {
+      width: 56px; height: 56px; flex-shrink: 0;
+      background: linear-gradient(135deg, rgba(201,168,76,0.15), rgba(201,168,76,0.05));
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: var(--radius-lg);
+      display: flex; align-items: center; justify-content: center; font-size: 1.8rem;
+    }
+    .service-info { flex: 1; }
+    .service-title {
+      font-family: var(--font-serif); font-size: var(--text-xl);
+      font-weight: 400; color: var(--color-text-primary); margin-bottom: var(--space-2);
+    }
+    .service-desc { font-size: var(--text-sm); color: var(--color-text-secondary); line-height: 1.7; }
+    .service-duration {
+      display: inline-block; margin-top: var(--space-3);
+      font-size: var(--text-xs); font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--color-accent);
+      background: rgba(201,168,76,0.08);
+      border: 1px solid rgba(201,168,76,0.2);
+      padding: 3px 10px; border-radius: var(--radius-pill);
+    }
+
+    /* Packages */
+    .packages-section {
+      padding: var(--space-32) 0; background: var(--color-bg-secondary);
+    }
+    .packages-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-6); margin-top: var(--space-12);
+    }
+    .package-card {
+      background: var(--color-bg-elevated);
+      border: 1px solid var(--color-separator);
+      border-radius: var(--radius-xl); padding: var(--space-8);
+      display: flex; flex-direction: column;
+      transition: transform var(--duration-slow) var(--ease-spring), border-color var(--duration-slow);
+    }
+    .package-card:hover { transform: translateY(-6px); border-color: rgba(201,168,76,0.4); }
+    .package-card--featured {
+      border-color: rgba(201,168,76,0.5);
+      background: linear-gradient(135deg, rgba(201,168,76,0.05), var(--color-bg-elevated));
+    }
+    .package-label {
+      font-size: var(--text-xs); font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--color-accent); margin-bottom: var(--space-4);
+    }
+    .package-name {
+      font-family: var(--font-serif); font-size: var(--text-2xl);
+      font-weight: 400; color: var(--color-text-primary); margin-bottom: var(--space-2);
+    }
+    .package-desc { font-size: var(--text-sm); color: var(--color-text-secondary); line-height: 1.6; margin-bottom: var(--space-6); }
+    .package-features { list-style: none; padding: 0; margin: 0 0 var(--space-8) 0; flex: 1; }
+    .package-features li {
+      padding: var(--space-2) 0;
+      font-size: var(--text-sm); color: var(--color-text-secondary);
+      border-bottom: 1px solid var(--color-separator);
+      display: flex; align-items: center; gap: var(--space-2);
+    }
+    .package-features li::before { content: '✦'; color: var(--color-accent); font-size: 0.6rem; }
+    .package-price {
+      font-size: var(--text-2xl); font-weight: 700; color: var(--color-text-primary);
+      margin-bottom: var(--space-2);
+    }
+    .package-price span { font-size: var(--text-sm); font-weight: 400; color: var(--color-text-tertiary); }
+
+    @media (max-width: 900px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .packages-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav" id="main-nav" role="navigation" aria-label="Головне меню">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo" aria-label="Cartel — на головну">
+        <span class="logo-text">CARTEL</span>
+      </a>
+      <ul class="nav-links" role="list">
+        <li><a href="../about/index.html" class="nav-link">ПРО НАС</a></li>
+        <li><a href="../restaurants/index.html" class="nav-link">РЕСТОРАНИ</a></li>
+        <li><a href="../hotels/index.html" class="nav-link">ГОТЕЛІ</a></li>
+        <li><a href="../spa/index.html" class="nav-link">SPA</a></li>
+        <li><a href="../team/index.html" class="nav-link">КОМАНДА</a></li>
+        <li><a href="../vacancies/index.html" class="nav-link">ВАКАНСІЇ</a></li>
+        <li><a href="../blog/index.html" class="nav-link">БЛОГ</a></li>
+        <li><a href="../contacts/index.html" class="nav-link">КОНТАКТИ</a></li>
+        <li><a href="#" class="nav-link" style="color: var(--color-accent);">UA</a> <span style="color:var(--color-text-tertiary)">|</span> <a href="#" class="nav-link">EN</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="tel:+380673441099" class="nav-cta" id="nav-book-btn">Забронювати</a>
+        <button class="hamburger" id="hamburger-btn" aria-label="Відкрити меню" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <ul role="list">
+      <li><a href="../about/index.html" class="mobile-nav-link">ПРО НАС</a></li>
+      <li><a href="../restaurants/index.html" class="mobile-nav-link">РЕСТОРАНИ</a></li>
+      <li><a href="../hotels/index.html" class="mobile-nav-link">ГОТЕЛІ</a></li>
+      <li><a href="../spa/index.html" class="mobile-nav-link">SPA</a></li>
+      <li><a href="../team/index.html" class="mobile-nav-link">КОМАНДА</a></li>
+      <li><a href="../vacancies/index.html" class="mobile-nav-link">ВАКАНСІЇ</a></li>
+      <li><a href="../blog/index.html" class="mobile-nav-link">БЛОГ</a></li>
+      <li><a href="../contacts/index.html" class="mobile-nav-link">КОНТАКТИ</a></li>
+      <li><a href="#" class="mobile-nav-link" style="display:inline-block; margin-right: 10px;">UA</a> <a href="#" class="mobile-nav-link" style="display:inline-block; color:var(--color-text-tertiary)">EN</a></li>
+    </ul>
+  </div>
+
+  <main>
+    <section class="page-hero" aria-labelledby="spa-hero-heading">
+      <div class="page-hero-bg"></div>
+      <div class="page-hero-overlay"></div>
+      <div class="page-hero-content">
+        <div class="page-breadcrumb">
+          <a href="../index.html">Cartel</a><span>›</span><span>SPA-комплекс</span>
+        </div>
+        <h1 class="page-hero-title" id="spa-hero-heading">
+          Відновлення.<br><em>Релакс.</em><br>Досконалість.
+        </h1>
+        <p class="page-hero-subtitle">
+          3 000 м² чистого блаженства в серці Карпат. Наш SPA-комплекс поєднує давні традиції відновлення з сучасними технологіями wellness для тіла та розуму.
+        </p>
+        <div class="hero-meta">
+          <div class="hero-meta-item">
+            <span class="hero-meta-label">Площа</span>
+            <span class="hero-meta-value">3 000 м²</span>
+          </div>
+          <div class="hero-meta-item">
+            <span class="hero-meta-label">Процедур</span>
+            <span class="hero-meta-value">40+</span>
+          </div>
+          <div class="hero-meta-item">
+            <span class="hero-meta-label">Кабінетів</span>
+            <span class="hero-meta-value">16</span>
+          </div>
+          <div class="hero-meta-item">
+            <span class="hero-meta-label">Режим роботи</span>
+            <span class="hero-meta-value">09:00–22:00</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services-section" aria-labelledby="spa-services-heading">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow">Послуги</p>
+          <h2 class="section-title" id="spa-services-heading">Ритуали відновлення</h2>
+          <p class="section-subtitle">Кожна процедура — мистецтво, виконане майстрами своєї справи</p>
+        </div>
+        <div class="services-grid">
+          <div class="service-card reveal" id="svc-hammam">
+            <div class="service-icon">♨️</div>
+            <div class="service-info">
+              <h3 class="service-title">Хаммам</h3>
+              <p class="service-desc">Класична турецька лазня з мармуровим підігрітим підлогою, парою та традиційним скрабуванням kessa. Глибоке очищення шкіри та розслаблення м'язів.</p>
+              <span class="service-duration">60 / 90 хв</span>
+            </div>
+          </div>
+          <div class="service-card reveal" id="svc-float">
+            <div class="service-icon">🌊</div>
+            <div class="service-info">
+              <h3 class="service-title">Флоатинг-камера</h3>
+              <p class="service-desc">Розслаблення в капсулі з насиченим сольовим розчином. Повна ізоляція від зовнішнього світу для глибокої медитації та перезавантаження нервової системи.</p>
+              <span class="service-duration">60 хв</span>
+            </div>
+          </div>
+          <div class="service-card reveal" id="svc-massage">
+            <div class="service-icon">🤲</div>
+            <div class="service-info">
+              <h3 class="service-title">Авторський масаж</h3>
+              <p class="service-desc">Шведський, тайський, балінезійський та stone massage з теплими каменями. Наші майстри проходили навчання у провідних SPA Таїланду та Балі.</p>
+              <span class="service-duration">60 / 90 / 120 хв</span>
+            </div>
+          </div>
+          <div class="service-card reveal" id="svc-pool">
+            <div class="service-icon">🏊</div>
+            <div class="service-info">
+              <h3 class="service-title">Термальні басейни</h3>
+              <p class="service-desc">Три басейни з різними температурними режимами: гарячий (40°C), теплий (36°C) та холодний (12°C) для контрастного гартування та відновлення кровообігу.</p>
+              <span class="service-duration">Вільний час</span>
+            </div>
+          </div>
+          <div class="service-card reveal" id="svc-face">
+            <div class="service-icon">✨</div>
+            <div class="service-info">
+              <h3 class="service-title">Косметологія та догляд</h3>
+              <p class="service-desc">Ін'єкційна косметологія, мікродермабразія, RF-ліфтинг, хімічні пілінги та авторські facial protocols з органічними преміум-засобами Kerastase та La Mer.</p>
+              <span class="service-duration">45–90 хв</span>
+            </div>
+          </div>
+          <div class="service-card reveal" id="svc-sauna">
+            <div class="service-icon">🔥</div>
+            <div class="service-info">
+              <h3 class="service-title">Фінська сауна</h3>
+              <p class="service-desc">Класична фінська сауна з запашною березовою парою, поруч з якою — кімната відпочинку з чаєм та свіжими фруктами. Ідеально після гірськолижного дня.</p>
+              <span class="service-duration">Вільний час</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Packages -->
+    <section class="packages-section" aria-labelledby="spa-packages-heading">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow">Пакети</p>
+          <h2 class="section-title" id="spa-packages-heading">Програми відновлення</h2>
+          <p class="section-subtitle">Готові рішення для ідеального дня відпочинку</p>
+        </div>
+        <div class="packages-grid">
+          <div class="package-card reveal" id="pkg-essential">
+            <div class="package-label">Essential</div>
+            <div class="package-name">Карпатський релакс</div>
+            <div class="package-desc">Ідеальне введення у світ Cartel SPA для відновлення після активного дня.</div>
+            <ul class="package-features">
+              <li>Фінська сауна (2 год)</li>
+              <li>Класичний масаж (60 хв)</li>
+              <li>Термальний басейн</li>
+              <li>Чайна церемонія</li>
+            </ul>
+            <div class="package-price">від 2 800 грн <span>/ особа</span></div>
+            <a href="tel:+380673441099" class="btn btn-secondary" id="pkg-essential-btn" style="margin-top:var(--space-4);text-align:center;">Записатися</a>
+          </div>
+          <div class="package-card package-card--featured reveal" id="pkg-signature">
+            <div class="package-label">★ Signature</div>
+            <div class="package-name">День у Cartel SPA</div>
+            <div class="package-desc">Найпопулярніший пакет — повний день розкоші та відновлення для двох.</div>
+            <ul class="package-features">
+              <li>Хаммам-ритуал (90 хв)</li>
+              <li>Тайський масаж (90 хв)</li>
+              <li>Флоатинг-сесія (60 хв)</li>
+              <li>Термальні басейни</li>
+              <li>Обід у SPA-ресторані</li>
+            </ul>
+            <div class="package-price">від 6 400 грн <span>/ 2 особи</span></div>
+            <a href="tel:+380673441099" class="btn btn-primary" id="pkg-signature-btn" style="margin-top:var(--space-4);text-align:center;">Записатися</a>
+          </div>
+          <div class="package-card reveal" id="pkg-royal">
+            <div class="package-label">Royal</div>
+            <div class="package-name">VIP-Wellness Retreat</div>
+            <div class="package-desc">Ексклюзивний досвід на весь день з персональним SPA-куратором та приватною зоною.</div>
+            <ul class="package-features">
+              <li>Приватний VIP-люкс (8 год)</li>
+              <li>Всі термальні зони</li>
+              <li>Будь-які 3 процедури</li>
+              <li>Персональний масажист</li>
+              <li>Дегустація вин</li>
+              <li>Вечеря на двох</li>
+            </ul>
+            <div class="package-price">від 12 000 грн <span>/ 2 особи</span></div>
+            <a href="tel:+380673441099" class="btn btn-secondary" id="pkg-royal-btn" style="margin-top:var(--space-4);text-align:center;">Записатися</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Booking -->
+    <section class="booking" aria-labelledby="spa-booking-heading">
+      <div class="container">
+        <div class="booking-inner">
+          <div class="booking-text">
+            <p class="section-eyebrow">Запис</p>
+            <h2 class="section-title" id="spa-booking-heading">Заплануйте<br>ваш SPA-день</h2>
+            <p class="booking-subtitle">Наш адміністратор підбере програму та зручний час для вас.</p>
+          </div>
+          <form class="booking-form" id="spa-booking-form" novalidate aria-label="Форма запису у Cartel SPA">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="spa-service" class="form-label">Послуга / Пакет</label>
+                <select id="spa-service" name="service" class="form-select" required>
+                  <option value="">Оберіть послугу</option>
+                  <option value="hammam">Хаммам</option>
+                  <option value="float">Флоатинг-камера</option>
+                  <option value="massage">Масаж</option>
+                  <option value="pkg-essential">Пакет: Карпатський релакс</option>
+                  <option value="pkg-signature">Пакет: День у Cartel SPA</option>
+                  <option value="pkg-royal">Пакет: VIP-Wellness Retreat</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="spa-date" class="form-label">Дата</label>
+                <input type="date" id="spa-date" name="date" class="form-input" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="spa-time" class="form-label">Час</label>
+                <input type="time" id="spa-time" name="time" class="form-input" required>
+              </div>
+              <div class="form-group">
+                <label for="spa-guests" class="form-label">Кількість осіб</label>
+                <select id="spa-guests" name="guests" class="form-select" required>
+                  <option value="">Кількість</option>
+                  <option value="1">1 особа</option>
+                  <option value="2">2 особи</option>
+                  <option value="3-4">3–4 особи</option>
+                  <option value="group">Група (5+)</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="spa-name" class="form-label">Ваше ім'я</label>
+              <input type="text" id="spa-name" name="name" class="form-input" placeholder="Олексій Шевченко" required autocomplete="name">
+            </div>
+            <div class="form-group">
+              <label for="spa-phone" class="form-label">Телефон</label>
+              <input type="tel" id="spa-phone" name="phone" class="form-input" placeholder="+38 (0XX) XXX-XX-XX" required autocomplete="tel">
+            </div>
+            <button type="submit" class="btn btn-primary btn-full" id="submit-spa-booking">Записатися</button>
+            <p class="form-note">Підтвердження запису протягом 15 хвилин</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <span class="logo-text">CARTEL</span>
+          <p class="footer-tagline">Холдинг гастрономії та розваг</p>
+        </div>
+        <nav class="footer-nav" aria-label="Навігація у підвалі">
+          <div class="footer-nav-col">
+            <h4 class="footer-nav-title">Проекти</h4>
+            <ul role="list">
+              <li><a href="../restaurants/index.html">Ресторани</a></li>
+              <li><a href="../voda-club/index.html">VODA Club</a></li>
+              <li><a href="../spa/index.html">SPA-комплекс</a></li>
+              <li><a href="../banya/index.html">Банька на дровах</a></li>
+              <li><a href="../fast-food/index.html">Фаст-фуд Eat'n'Go!</a></li>
+            </ul>
+          </div>
+          <div class="footer-nav-col">
+            <h4 class="footer-nav-title">Інформація</h4>
+            <ul role="list">
+              <li><a href="#">Команда</a></li>
+              <li><a href="#">Вакансії</a></li>
+              <li><a href="#">Блог</a></li>
+              <li><a href="../contacts/index.html">Контакти</a></li>
+            </ul>
+          </div>
+          <div class="footer-nav-col">
+            <h4 class="footer-nav-title">Партнери</h4>
+            <ul role="list">
+              <li><a href="http://bukovel.com/" target="_blank">ТК «Буковель»</a></li>
+              <li><a href="https://www.carlsberg.com/" target="_blank">Carlsberg</a></li>
+              <li><a href="http://www.jackdaniels.com/" target="_blank">Jack Daniel's</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2004–2026 Cartel Holding. Усі права захищено.</p>
+        <p class="footer-copy">🇺🇦 Зроблено в Україні (Буковель · Одеса · Яремче)</p>
+      </div>
+    </div>
+  </footer>
+  <script src="../script.js"></script>
+</body>
+</html>
