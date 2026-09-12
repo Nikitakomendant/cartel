@@ -4,31 +4,58 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LE GRAND RESTAURANT — Cartel</title>
-  <meta name="description" content="LE GRAND RESTAURANT — Вишукана кухня в Буковелі. Особливе місце, де ви можете насолодитися вишуканою кухнею, неймовірними краєвидами та атмосферою.">
+  <meta name="description" content="LE GRAND RESTAURANT — особливе місце в Буковелі, де на вас чекає вишукана кухня, неймовірні краєвиди та атмосфера.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../styles.css">
   <style>
-    .venue-hero-content { position: absolute; left: 0; right: 0; bottom: 0; z-index: 1; padding: var(--space-12) var(--space-6); max-width: var(--container-max); margin: 0 auto; }
+    .venue-hero { position: relative; height: 62vh; min-height: 440px; overflow: hidden; }
+    .venue-hero img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .venue-hero-overlay { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(5,5,5,0.94) 0%, rgba(5,5,5,0.35) 55%, rgba(5,5,5,0.1) 100%); }
+    .venue-hero-content { position: absolute; left: 0; right: 0; bottom: 0; z-index: 1; padding: var(--space-12) var(--space-6); max-width: var(--container-max); margin: 0 auto; display: flex; align-items: flex-end; justify-content: space-between; gap: var(--space-8); flex-wrap: wrap; }
     .page-breadcrumb { font-size: var(--text-xs); font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-accent); margin-bottom: var(--space-4); display: flex; align-items: center; gap: var(--space-2); }
     .page-breadcrumb a { color: rgba(201,168,76,0.6); }
     .page-breadcrumb a:hover { color: var(--color-accent); }
     .venue-hero-title { font-family: var(--font-serif); font-size: clamp(2.2rem, 6vw, 3.8rem); font-weight: 400; color: #fff; letter-spacing: -0.02em; margin-bottom: var(--space-3); }
-    .venue-hero-tag { display: inline-block; font-size: var(--text-xs); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-accent); border: 1px solid rgba(201,168,76,0.35); padding: var(--space-1) var(--space-4); border-radius: var(--radius-pill); background: rgba(10,10,10,0.5); backdrop-filter: blur(6px); margin-bottom: var(--space-4); }
+    .venue-hero-tag { display: inline-block; font-size: var(--text-xs); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-accent); border: 1px solid rgba(201,168,76,0.35); padding: var(--space-1) var(--space-4); border-radius: var(--radius-pill); background: rgba(10,10,10,0.5); backdrop-filter: blur(6px); }
+    .venue-hero-logo { width: 108px; height: 108px; border-radius: var(--radius-lg); background: #fff; padding: var(--space-3); flex-shrink: 0; box-shadow: var(--shadow-xl); }
+    .venue-hero-logo img { width: 100%; height: 100%; object-fit: contain; border-radius: 0; }
 
     .venue-body { padding: var(--space-20) 0 var(--space-28); background: var(--color-bg-primary); }
     .venue-body-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: var(--space-16); align-items: start; }
     .venue-desc { font-size: var(--text-lg); color: var(--color-text-secondary); line-height: 1.8; }
+    .venue-desc p { margin-bottom: var(--space-5); }
+    .venue-links { display: flex; flex-direction: column; gap: var(--space-3); margin-top: var(--space-10); }
+    .venue-link-row {
+      display: flex; align-items: center; justify-content: space-between;
+      background: var(--color-bg-elevated); border: 1px solid var(--color-separator); border-radius: var(--radius-lg);
+      padding: var(--space-5) var(--space-6); font-size: var(--text-sm); font-weight: 600;
+      letter-spacing: 0.02em; text-transform: uppercase; color: var(--color-text-primary);
+      transition: border-color var(--duration-fast), transform var(--duration-fast);
+    }
+    .venue-link-row:hover { border-color: rgba(201,168,76,0.35); transform: translateX(4px); color: var(--color-accent); }
 
     .venue-cta-card { background: var(--color-bg-elevated); border: 1px solid var(--color-separator); border-radius: var(--radius-xl); padding: var(--space-8); position: sticky; top: calc(var(--nav-height) + var(--space-6)); }
     .venue-cta-title { font-family: var(--font-serif); font-size: var(--text-xl); color: var(--color-text-primary); margin-bottom: var(--space-5); }
-    .venue-cta-text { font-size: var(--text-sm); color: var(--color-text-secondary); line-height: 1.6; margin-bottom: var(--space-6); }
-    .venue-cta-card .btn { width: 100%; text-align: center; margin-bottom: var(--space-3); }
+    .venue-info-row { display: flex; justify-content: space-between; align-items: baseline; padding: var(--space-3) 0; border-bottom: 1px solid var(--color-separator); }
+    .venue-info-row:last-of-type { border-bottom: none; }
+    .venue-info-label { font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-text-tertiary); }
+    .venue-info-value { font-size: var(--text-sm); font-weight: 600; color: var(--color-text-primary); text-align: right; }
+    .venue-info-value a { color: var(--color-accent); }
+    .venue-social-row { display: flex; gap: var(--space-3); margin-top: var(--space-6); }
+    .venue-social-row a {
+      flex: 1; text-align: center; font-size: var(--text-xs); font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase;
+      padding: var(--space-3); border: 1px solid var(--color-separator); border-radius: var(--radius-md);
+      color: var(--color-text-secondary); transition: all var(--duration-fast);
+    }
+    .venue-social-row a:hover { border-color: var(--color-accent); color: var(--color-accent); }
+    .venue-cta-card .btn { width: 100%; text-align: center; margin-top: var(--space-6); }
 
     @media (max-width: 900px) {
       .venue-body-grid { grid-template-columns: 1fr; }
       .venue-cta-card { position: static; }
+      .venue-hero-content { align-items: center; }
     }
   </style>
 </head>
@@ -71,17 +98,10 @@
   </div>
 
   <main>
-    <section class="venue-carousel venue-carousel--single" aria-labelledby="le-grand-hero-heading">
-      <div class="venue-carousel-track">
-        <div class="venue-carousel-slide">
-          <img src="../../images/restaurants/le-grand.jpg" alt="LE GRAND RESTAURANT">
-        </div>
-      </div>
-      <div class="venue-carousel-overlay"></div>
-      <button class="venue-carousel-arrow venue-carousel-arrow--prev" aria-label="Попереднє фото">‹</button>
-      <button class="venue-carousel-arrow venue-carousel-arrow--next" aria-label="Наступне фото">›</button>
-      <div class="venue-carousel-dots"></div>
-      <div class="venue-carousel-content">
+    <section class="venue-hero" aria-labelledby="teppan-hero-heading">
+      <img src="../../images/restaurants/le-grand.jpg" alt="LE GRAND RESTAURANT">
+      <div class="venue-hero-overlay"></div>
+      <div class="venue-hero-content">
         <div>
           <div class="page-breadcrumb"><a href="../../index.html">Cartel</a><span>›</span><a href="../index.html">Ресторани</a><span>›</span><span>LE GRAND RESTAURANT</span></div>
           <span class="venue-hero-tag">Буковель · Вишукана кухня</span>
@@ -93,14 +113,34 @@
     <section class="venue-body">
       <div class="container venue-body-grid">
         <div>
-          <span class="venue-pending-badge">⏳ Сторінка наповнюється — фото, контакти та години роботи уточнюються</span>
-          <p class="venue-desc">Особливе місце, де ви можете насолодитися вишуканою кухнею, неймовірними краєвидами та атмосферою.</p>
+          <div class="venue-desc">
+            <p>Особливе місце, де ви можете насолодитися вишуканою кухнею, неймовірними краєвидами та атмосферою.</p>
+          </div>
+          <div class="venue-links">
+            <a href="https://expz.menu/5719297a-66bf-43eb-b980-4b368da5bd6b" target="_blank" rel="noopener" class="venue-link-row">Переглянути меню →</a>
+            <a href="#teppan-info" class="venue-link-row">Контакти та години роботи →</a>
+            <a href="../../contacts/index.html#map" class="venue-link-row">Розташування на мапі →</a>
+          </div>
         </div>
-        <aside class="venue-cta-card reveal">
-          <h2 class="venue-cta-title">Бронювання</h2>
-          <p class="venue-cta-text">Поки триває наповнення сторінки — забронювати столик можна за загальним номером холдингу.</p>
-          <a href="tel:+380673441099" class="btn btn-primary">+38 (067) 344-10-99</a>
-          <a href="../../contacts/index.html" class="btn btn-secondary">Написати нам</a>
+        <aside class="venue-cta-card reveal" id="le-grand-info">
+          <h2 class="venue-cta-title">Контакти та години роботи</h2>
+          <div class="venue-info-row">
+            <span class="venue-info-label">Телефон</span>
+            <span class="venue-info-value"><a href="tel:+380973501122">+38 097 350 11 22</a></span>
+          </div>
+          <div class="venue-info-row">
+            <span class="venue-info-label">Години роботи</span>
+            <span class="venue-info-value">11:00–23:00</span>
+          </div>
+          <div class="venue-info-row">
+            <span class="venue-info-label">Локація</span>
+            <span class="venue-info-value">ТК «Буковель»</span>
+          </div>
+          <div class="venue-social-row">
+            <a href="https://www.facebook.com/profile.php?id=61571297911197" target="_blank" rel="noopener">Facebook</a>
+            <a href="https://www.instagram.com/legrand.restaurant.bukovel/" target="_blank" rel="noopener">Instagram</a>
+          </div>
+          <a href="tel:+380973501122" class="btn btn-primary">Забронювати столик</a>
         </aside>
       </div>
     </section>
