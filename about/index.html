@@ -76,7 +76,20 @@
       text-transform: uppercase;
       color: rgba(201,168,76,0.65);
     }
-    .hero-meta-value { font-size: var(--text-xl); font-weight: 600; color: #fff; }
+    .hero-meta-value {
+      font-family: var(--font-serif);
+      font-size: var(--text-2xl);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.15;
+    }
+    .hero-meta-value-suffix {
+      font-family: var(--font-sans);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      color: rgba(255,255,255,0.65);
+      margin-left: 4px;
+    }
 
     /* Story section */
     .story {
@@ -327,19 +340,19 @@
         <div class="hero-meta">
           <div class="hero-meta-item">
             <span class="hero-meta-label">Заснування</span>
-            <span class="hero-meta-value">2004 рік</span>
+            <span class="hero-meta-value">2004</span>
           </div>
           <div class="hero-meta-item">
             <span class="hero-meta-label">Заклади</span>
-            <span class="hero-meta-value">17 ресторанів</span>
+            <span class="hero-meta-value">17<span class="hero-meta-value-suffix">ресторанів</span></span>
           </div>
           <div class="hero-meta-item">
             <span class="hero-meta-label">Географія</span>
-            <span class="hero-meta-value">3 міста України</span>
+            <span class="hero-meta-value">3<span class="hero-meta-value-suffix">міста України</span></span>
           </div>
           <div class="hero-meta-item">
             <span class="hero-meta-label">Події</span>
-            <span class="hero-meta-value">200+ на рік</span>
+            <span class="hero-meta-value">200+<span class="hero-meta-value-suffix">на рік</span></span>
           </div>
         </div>
       </div>
