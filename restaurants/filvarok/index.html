@@ -4,10 +4,33 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Filvarok — Cartel</title>
+  <meta name="description" content="Filvarok — Українська кухня в Буковелі. Українська кухня, страви на вогні.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../styles.css">
+  <style>
+    .venue-hero-content { position: absolute; left: 0; right: 0; bottom: 0; z-index: 1; padding: var(--space-12) var(--space-6); max-width: var(--container-max); margin: 0 auto; }
+    .page-breadcrumb { font-size: var(--text-xs); font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-accent); margin-bottom: var(--space-4); display: flex; align-items: center; gap: var(--space-2); }
+    .page-breadcrumb a { color: rgba(201,168,76,0.6); }
+    .page-breadcrumb a:hover { color: var(--color-accent); }
+    .venue-hero-title { font-family: var(--font-serif); font-size: clamp(2.2rem, 6vw, 3.8rem); font-weight: 400; color: #fff; letter-spacing: -0.02em; margin-bottom: var(--space-3); }
+    .venue-hero-tag { display: inline-block; font-size: var(--text-xs); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-accent); border: 1px solid rgba(201,168,76,0.35); padding: var(--space-1) var(--space-4); border-radius: var(--radius-pill); background: rgba(10,10,10,0.5); backdrop-filter: blur(6px); margin-bottom: var(--space-4); }
+
+    .venue-body { padding: var(--space-20) 0 var(--space-28); background: var(--color-bg-primary); }
+    .venue-body-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: var(--space-16); align-items: start; }
+    .venue-desc { font-size: var(--text-lg); color: var(--color-text-secondary); line-height: 1.8; }
+
+    .venue-cta-card { background: var(--color-bg-elevated); border: 1px solid var(--color-separator); border-radius: var(--radius-xl); padding: var(--space-8); position: sticky; top: calc(var(--nav-height) + var(--space-6)); }
+    .venue-cta-title { font-family: var(--font-serif); font-size: var(--text-xl); color: var(--color-text-primary); margin-bottom: var(--space-5); }
+    .venue-cta-text { font-size: var(--text-sm); color: var(--color-text-secondary); line-height: 1.6; margin-bottom: var(--space-6); }
+    .venue-cta-card .btn { width: 100%; text-align: center; margin-bottom: var(--space-3); }
+
+    @media (max-width: 900px) {
+      .venue-body-grid { grid-template-columns: 1fr; }
+      .venue-cta-card { position: static; }
+    }
+  </style>
 </head>
 <body>
   <!-- Navigation -->
@@ -25,7 +48,7 @@
         <li><a href="../../vacancies/index.html" class="nav-link">ВАКАНСІЇ</a></li>
         <li><a href="../../blog/index.html" class="nav-link">БЛОГ</a></li>
         <li><a href="../../contacts/index.html" class="nav-link">КОНТАКТИ</a></li>
-    </ul>
+      </ul>
       <div class="nav-actions">
         <a href="tel:+380673441099" class="nav-cta" id="nav-book-btn">Забронювати</a>
         <button class="hamburger" id="hamburger-btn" aria-label="Відкрити меню" aria-expanded="false">
@@ -48,16 +71,88 @@
   </div>
 
   <main>
-    <section class="page-hero">
-      <div class="page-hero-bg" style="background: linear-gradient(135deg, #111, #000);"></div>
-      <div class="page-hero-content" style="padding-top: 150px; padding-bottom: 50px;">
-        <h1 class="page-hero-title">Фільварок</h1>
+    <section class="venue-carousel venue-carousel--single" aria-labelledby="filvarok-hero-heading">
+      <div class="venue-carousel-track">
+        <div class="venue-carousel-slide">
+          <img src="../../images/restaurants/filvarok.jpg" alt="Filvarok">
+        </div>
+      </div>
+      <div class="venue-carousel-overlay"></div>
+      <button class="venue-carousel-arrow venue-carousel-arrow--prev" aria-label="Попереднє фото">‹</button>
+      <button class="venue-carousel-arrow venue-carousel-arrow--next" aria-label="Наступне фото">›</button>
+      <div class="venue-carousel-dots"></div>
+      <div class="venue-carousel-content">
+        <div>
+          <div class="page-breadcrumb"><a href="../../index.html">Cartel</a><span>›</span><a href="../index.html">Ресторани</a><span>›</span><span>Filvarok</span></div>
+          <span class="venue-hero-tag">Буковель · Українська кухня</span>
+          <h1 class="venue-hero-title" id="filvarok-hero-heading">Filvarok</h1>
+        </div>
       </div>
     </section>
-    <section class="container" style="padding: 100px 20px; min-height: 50vh;">
-      <p style="color: var(--color-text-secondary)">Сторінка в процесі наповнення...</p>
+
+    <section class="venue-body">
+      <div class="container venue-body-grid">
+        <div>
+          <span class="venue-pending-badge">⏳ Сторінка наповнюється — фото, контакти та години роботи уточнюються</span>
+          <p class="venue-desc">Українська кухня, страви на вогні.</p>
+        </div>
+        <aside class="venue-cta-card reveal">
+          <h2 class="venue-cta-title">Бронювання</h2>
+          <p class="venue-cta-text">Поки триває наповнення сторінки — забронювати столик можна за загальним номером холдингу.</p>
+          <a href="tel:+380673441099" class="btn btn-primary">+38 (067) 344-10-99</a>
+          <a href="../../contacts/index.html" class="btn btn-secondary">Написати нам</a>
+        </aside>
+      </div>
     </section>
   </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <span class="logo-text">CARTEL</span>
+          <p class="footer-tagline">Холдинг гастрономії та розваг</p>
+        </div>
+        <nav class="footer-nav" aria-label="Навігація у підвалі">
+          <div class="footer-nav-col">
+            <h4 class="footer-nav-title">Проекти</h4>
+            <ul role="list">
+              <li><a href="../../restaurants/index.html">Ресторани</a></li>
+              <li><a href="../../voda-club/index.html">VODA Club</a></li>
+              <li><a href="../../spa/index.html">SPA-комплекс</a></li>
+              <li><a href="../../banya/index.html">Банька на дровах</a></li>
+              <li><a href="../../fast-food/index.html">Фаст-фуд Eat'n'Go!</a></li>
+            </ul>
+          </div>
+          <div class="footer-nav-col">
+            <h4 class="footer-nav-title">Інформація</h4>
+            <ul role="list">
+              <li><a href="../../team/index.html">Команда</a></li>
+              <li><a href="../../vacancies/index.html">Вакансії</a></li>
+              <li><a href="../../blog/index.html">Блог</a></li>
+              <li><a href="../../contacts/index.html">Контакти</a></li>
+            </ul>
+          </div>
+          <div class="footer-nav-col">
+            <h4 class="footer-nav-title">Партнери</h4>
+            <ul role="list">
+              <li><a href="http://bukovel.com/" target="_blank">ТК «Буковель»</a></li>
+              <li><a href="https://www.carlsberg.com/" target="_blank">Carlsberg</a></li>
+              <li><a href="https://www.grimbergen.com/" target="_blank">Grimbergen</a></li>
+              <li><a href="https://www.jagermeister.com/" target="_blank">Jägermeister</a></li>
+              <li><a href="http://www.jackdaniels.com/" target="_blank">Jack Daniel's</a></li>
+              <li><a href="https://richard-tea.com/" target="_blank">Richard</a></li>
+              <li><a href="https://www.metaxa.com/" target="_blank">METAXA</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2004–2026 Cartel Holding. Усі права захищено.</p>
+        <p class="footer-copy">🇺🇦 Зроблено в Україні (Буковель · Одеса · Яремче)</p>
+      </div>
+    </div>
+  </footer>
   <script src="../../script.js"></script>
 </body>
 </html>

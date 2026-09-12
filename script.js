@@ -204,6 +204,44 @@
 })();
 
 
+// === VENUE PHOTO CAROUSEL ===
+(function initVenueCarousels() {
+  document.querySelectorAll('.venue-carousel').forEach((carousel) => {
+    const track = carousel.querySelector('.venue-carousel-track');
+    const slides = carousel.querySelectorAll('.venue-carousel-slide');
+    if (!track || slides.length <= 1) return; // nothing to do for single-photo venues
+
+    let index = 0;
+    const dotsWrap = carousel.querySelector('.venue-carousel-dots');
+    const dots = dotsWrap ? Array.from(dotsWrap.children) : [];
+
+    function update() {
+      track.style.transform = `translateX(-${index * 100}%)`;
+      dots.forEach((d, i) => d.classList.toggle('active', i === index));
+    }
+
+    function go(delta) {
+      index = (index + delta + slides.length) % slides.length;
+      update();
+    }
+
+    carousel.querySelector('.venue-carousel-arrow--prev')?.addEventListener('click', () => go(-1));
+    carousel.querySelector('.venue-carousel-arrow--next')?.addEventListener('click', () => go(1));
+    dots.forEach((dot, i) => dot.addEventListener('click', () => { index = i; update(); }));
+
+    // Swipe support (mobile)
+    let startX = null;
+    carousel.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; }, { passive: true });
+    carousel.addEventListener('touchend', (e) => {
+      if (startX === null) return;
+      const diff = e.changedTouches[0].clientX - startX;
+      if (Math.abs(diff) > 40) go(diff < 0 ? 1 : -1);
+      startX = null;
+    }, { passive: true });
+  });
+})();
+
+
 // === CONTACTS: DEPARTMENT MESSAGE FORM ===
 (function initMessageForm() {
   const form = document.getElementById('message-form');

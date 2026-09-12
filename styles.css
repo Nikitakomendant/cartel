@@ -1472,8 +1472,34 @@ a.contact-note:hover { color: var(--color-accent); }
 /* === COLOR SCHEME (Light mode — users with light preference) === */
 @media (prefers-color-scheme: light) {
   :root {
-    /* Keep dark — brand decision for premium feel */
-    /* If you want auto light mode, uncomment below: */
-    /* --color-bg-primary: #ffffff; */
-  }
+/* === VENUE PHOTO CAROUSEL (reusable across venue detail pages) === */
+.venue-carousel { position: relative; height: 62vh; min-height: 440px; overflow: hidden; background: #0a0a0a; }
+.venue-carousel-track { display: flex; height: 100%; transition: transform var(--duration-slow) var(--ease-out); }
+.venue-carousel-slide { flex: 0 0 100%; height: 100%; }
+.venue-carousel-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.venue-carousel-overlay { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(5,5,5,0.94) 0%, rgba(5,5,5,0.35) 55%, rgba(5,5,5,0.1) 100%); pointer-events: none; }
+.venue-carousel-content { position: absolute; left: 0; right: 0; bottom: 0; z-index: 1; padding: var(--space-12) var(--space-6); max-width: var(--container-max); margin: 0 auto; display: flex; align-items: flex-end; justify-content: space-between; gap: var(--space-8); flex-wrap: wrap; }
+.venue-carousel-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%); z-index: 2;
+  width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.25);
+  background: rgba(10,10,10,0.45); color: #fff; font-size: 1.1rem; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  backdrop-filter: blur(6px); transition: background var(--duration-fast), border-color var(--duration-fast);
 }
+.venue-carousel-arrow:hover { background: rgba(201,168,76,0.55); border-color: var(--color-accent); }
+.venue-carousel-arrow--prev { left: var(--space-5); }
+.venue-carousel-arrow--next { right: var(--space-5); }
+.venue-carousel-dots { position: absolute; bottom: var(--space-5); left: 50%; transform: translateX(-50%); z-index: 2; display: flex; gap: var(--space-2); }
+.venue-carousel-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.35); border: none; cursor: pointer; padding: 0; transition: background var(--duration-fast), transform var(--duration-fast); }
+.venue-carousel-dot.active { background: var(--color-accent); transform: scale(1.3); }
+.venue-carousel--single .venue-carousel-arrow,
+.venue-carousel--single .venue-carousel-dots { display: none; }
+
+/* Pending-content marker used on venue pages awaiting real data */
+.venue-pending-badge {
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  font-size: var(--text-xs); font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase;
+  color: #e0a83a; background: rgba(224,168,58,0.1); border: 1px solid rgba(224,168,58,0.3);
+  padding: var(--space-2) var(--space-4); border-radius: var(--radius-pill); margin-bottom: var(--space-6);
+}
+
