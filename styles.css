@@ -996,6 +996,18 @@ button {
   margin-top: var(--space-4);
 }
 
+/* Simple call-to-book card (used instead of a form until a real booking/CRM system is wired up) */
+.booking-cta-card {
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-separator-strong);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-10);
+  text-align: center;
+}
+.booking-cta-icon { font-size: 2rem; display: block; margin-bottom: var(--space-5); }
+.booking-cta-btn { display: inline-flex; width: auto; padding-left: var(--space-10); padding-right: var(--space-10); }
+.booking-cta-note { margin-top: var(--space-5); font-size: var(--text-sm); color: var(--color-text-tertiary); }
+
 /* Form */
 .booking-form {
   background: var(--color-bg-elevated);

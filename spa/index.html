@@ -353,52 +353,11 @@
             <h2 class="section-title" id="spa-booking-heading">Заплануйте<br>ваш SPA-день</h2>
             <p class="booking-subtitle">Наш адміністратор підбере програму та зручний час для вас.</p>
           </div>
-          <form class="booking-form" id="spa-booking-form" novalidate aria-label="Форма запису у Cartel SPA">
-            <div class="form-row">
-              <div class="form-group">
-                <label for="spa-service" class="form-label">Послуга / Пакет</label>
-                <select id="spa-service" name="service" class="form-select" required>
-                  <option value="">Оберіть послугу</option>
-                  <option value="hammam">Хаммам</option>
-                  <option value="float">Флоатинг-камера</option>
-                  <option value="massage">Масаж</option>
-                  <option value="pkg-essential">Пакет: Карпатський релакс</option>
-                  <option value="pkg-signature">Пакет: День у Cartel SPA</option>
-                  <option value="pkg-royal">Пакет: VIP-Wellness Retreat</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="spa-date" class="form-label">Дата</label>
-                <input type="date" id="spa-date" name="date" class="form-input" required>
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="spa-time" class="form-label">Час</label>
-                <input type="time" id="spa-time" name="time" class="form-input" required>
-              </div>
-              <div class="form-group">
-                <label for="spa-guests" class="form-label">Кількість осіб</label>
-                <select id="spa-guests" name="guests" class="form-select" required>
-                  <option value="">Кількість</option>
-                  <option value="1">1 особа</option>
-                  <option value="2">2 особи</option>
-                  <option value="3-4">3–4 особи</option>
-                  <option value="group">Група (5+)</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="spa-name" class="form-label">Ваше ім'я</label>
-              <input type="text" id="spa-name" name="name" class="form-input" placeholder="Олексій Шевченко" required autocomplete="name">
-            </div>
-            <div class="form-group">
-              <label for="spa-phone" class="form-label">Телефон</label>
-              <input type="tel" id="spa-phone" name="phone" class="form-input" placeholder="+38 (0XX) XXX-XX-XX" required autocomplete="tel">
-            </div>
-            <button type="submit" class="btn btn-primary btn-full" id="submit-spa-booking">Записатися</button>
-            <p class="form-note">Підтвердження запису протягом 15 хвилин</p>
-          </form>
+          <div class="booking-cta-card reveal" id="spa-booking-cta">
+            <span class="booking-cta-icon" aria-hidden="true">📞</span>
+            <a href="tel:+380673441099" class="btn btn-primary booking-cta-btn">+38 (067) 344-10-99</a>
+            <p class="booking-cta-note">Адміністратор підбере програму та зручний час — щодня 09:00–23:00</p>
+          </div>
         </div>
       </div>
     </section>

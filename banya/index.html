@@ -307,49 +307,11 @@
             <h2 class="section-title" id="banya-booking-heading">Забронюйте<br>свою баньку</h2>
             <p class="booking-subtitle">Лазня прогрівається за 2 години. Бронюйте завчасно.</p>
           </div>
-          <form class="booking-form" id="banya-booking-form" novalidate aria-label="Форма бронювання баньки">
-            <div class="form-row">
-              <div class="form-group">
-                <label for="banya-select" class="form-label">Лазня</label>
-                <select id="banya-select" name="banya" class="form-select" required>
-                  <option value="">Оберіть баньку</option>
-                  <option value="cedar">Кедрова лазня</option>
-                  <option value="pine">Соснова банька</option>
-                  <option value="royal">Королівська лазня VIP</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="banya-date" class="form-label">Дата</label>
-                <input type="date" id="banya-date" name="date" class="form-input" required>
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="banya-time" class="form-label">Час початку</label>
-                <input type="time" id="banya-time" name="time" class="form-input" required>
-              </div>
-              <div class="form-group">
-                <label for="banya-duration" class="form-label">Тривалість</label>
-                <select id="banya-duration" name="duration" class="form-select" required>
-                  <option value="">Оберіть</option>
-                  <option value="2h">2 години</option>
-                  <option value="4h">4 години</option>
-                  <option value="6h">6 годин</option>
-                  <option value="night">Нічна (8 год)</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="banya-name" class="form-label">Ваше ім'я</label>
-              <input type="text" id="banya-name" name="name" class="form-input" placeholder="Олексій Шевченко" required autocomplete="name">
-            </div>
-            <div class="form-group">
-              <label for="banya-phone" class="form-label">Телефон</label>
-              <input type="tel" id="banya-phone" name="phone" class="form-input" placeholder="+38 (0XX) XXX-XX-XX" required autocomplete="tel">
-            </div>
-            <button type="submit" class="btn btn-primary btn-full" id="submit-banya-booking">Забронювати баньку</button>
-            <p class="form-note">Будемо чекати вас. Лазня буде готова!</p>
-          </form>
+          <div class="booking-cta-card reveal" id="banya-booking-cta">
+            <span class="booking-cta-icon" aria-hidden="true">📞</span>
+            <a href="tel:+380673441099" class="btn btn-primary booking-cta-btn">+38 (067) 344-10-99</a>
+            <p class="booking-cta-note">Оберемо баньку та зручний час — лазня прогрівається за 2 години, тож бронюйте завчасно</p>
+          </div>
         </div>
       </div>
     </section>

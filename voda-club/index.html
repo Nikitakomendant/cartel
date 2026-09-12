@@ -365,46 +365,11 @@
             <h2 class="section-title" id="voda-booking-heading">Забронюйте<br>кабанку</h2>
             <p class="booking-subtitle">Персональний менеджер підбере кабанку під вашу компанію та бажання.</p>
           </div>
-          <form class="booking-form" id="voda-booking-form" novalidate aria-label="Форма бронювання VIP у VODA Club">
-            <div class="form-row">
-              <div class="form-group">
-                <label for="voda-type" class="form-label">Тип броні</label>
-                <select id="voda-type" name="type" class="form-select" required>
-                  <option value="">Оберіть тип</option>
-                  <option value="vip-kabanka">VIP-кабанка</option>
-                  <option value="pool-party">Pool Party (вхід)</option>
-                  <option value="main-floor">Main Floor (вхід)</option>
-                  <option value="private-event">Приватна подія</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="voda-date" class="form-label">Дата</label>
-                <input type="date" id="voda-date" name="date" class="form-input" required>
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="voda-guests" class="form-label">Кількість гостей</label>
-                <select id="voda-guests" name="guests" class="form-select" required>
-                  <option value="">Кількість</option>
-                  <option value="1-2">1–2 особи</option>
-                  <option value="3-5">3–5 осіб</option>
-                  <option value="6-10">6–10 осіб</option>
-                  <option value="11+">11+ осіб</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="voda-name" class="form-label">Ваше ім'я</label>
-                <input type="text" id="voda-name" name="name" class="form-input" placeholder="Олексій Шевченко" required autocomplete="name">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="voda-phone" class="form-label">Телефон</label>
-              <input type="tel" id="voda-phone" name="phone" class="form-input" placeholder="+38 (0XX) XXX-XX-XX" required autocomplete="tel">
-            </div>
-            <button type="submit" class="btn btn-primary btn-full" id="submit-voda-booking">Підтвердити бронювання</button>
-            <p class="form-note">Наш менеджер зв'яжеться з вами протягом 30 хвилин</p>
-          </form>
+          <div class="booking-cta-card reveal" id="voda-booking-cta">
+            <span class="booking-cta-icon" aria-hidden="true">📞</span>
+            <a href="tel:+380673441099" class="btn btn-primary booking-cta-btn">+38 (067) 344-10-99</a>
+            <p class="booking-cta-note">Персональний менеджер підбере кабанку під вашу компанію — щодня 09:00–23:00</p>
+          </div>
         </div>
       </div>
     </section>
