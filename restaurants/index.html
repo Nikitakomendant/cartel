@@ -85,6 +85,12 @@
       transform: translateY(-6px);
       box-shadow: var(--shadow-xl);
     }
+    .restaurant-card-badge--closed {
+      left: auto;
+      right: var(--space-4);
+      color: #e0693a;
+      border-color: rgba(224,105,58,0.35);
+    }
     .restaurant-card-image {
       height: 220px;
       position: relative;
@@ -258,6 +264,7 @@
             <div class="restaurant-card-image">
               <img src="../images/restaurants/asia-garden.jpg" alt="Asia Garden" loading="lazy" width="600" height="400">
               <span class="restaurant-card-badge">Буковель</span>
+              <span class="restaurant-card-badge restaurant-card-badge--closed">Тимчасово зачинено</span>
             </div>
             <div class="restaurant-card-body">
               <span class="restaurant-card-location">ТК «Буковель»</span>
