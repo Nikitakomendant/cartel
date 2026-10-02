@@ -231,7 +231,7 @@ button {
 .nav-cta {
   font-size: var(--text-sm);
   font-weight: 500;
-  color: var(--color-text-primary);
+  color: var(--color-bg-primary);
   background: var(--color-accent);
   padding: var(--space-2) var(--space-5);
   border-radius: var(--radius-pill);
@@ -360,8 +360,8 @@ button {
   position: absolute;
   inset: 0;
   background: 
-    linear-gradient(to bottom, rgba(10,10,10,0.5) 0%, rgba(10,10,10,0.2) 40%, rgba(10,10,10,0.7) 100%),
-    radial-gradient(ellipse at center, transparent 30%, rgba(10,10,10,0.5) 100%);
+    linear-gradient(to bottom, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.35) 40%, rgba(10,10,10,0.75) 100%),
+    radial-gradient(ellipse 70% 55% at center, rgba(10,10,10,0.6) 0%, rgba(10,10,10,0.25) 55%, transparent 100%);
 }
 
 .hero-content {
@@ -411,6 +411,7 @@ button {
   line-height: 1.05;
   letter-spacing: -0.03em;
   color: var(--color-text-primary);
+  text-shadow: 0 2px 24px rgba(0,0,0,0.45);
   margin-bottom: var(--space-6);
   animation: fadeInUp var(--duration-enter) var(--ease-out) 0.4s both;
 }
@@ -423,7 +424,8 @@ button {
 .hero-subtitle {
   font-size: var(--text-lg);
   font-weight: 300;
-  color: var(--color-text-secondary);
+  color: rgba(245, 245, 247, 0.86);
+  text-shadow: 0 2px 16px rgba(0,0,0,0.5);
   line-height: 1.6;
   margin-bottom: var(--space-10);
   animation: fadeInUp var(--duration-enter) var(--ease-out) 0.6s both;
