@@ -1,0 +1,15 @@
+<section class="section" id="b-{{ bid }}">
+  <div class="wrap contact-sheet">
+    <div class="contact-sheet__head">
+      {% if t(d.title) %}<h2 class="display-m">{{ t(d.title) }}</h2>{% endif %}
+      {% if t(d.text) %}<p class="lead">{{ t(d.text) }}</p>{% endif %}
+    </div>
+    <dl class="contact-sheet__list">
+      {% for p in company.phones %}<div><dt>{{ t(p.label) or s('common.phone') }}</dt><dd><a class="big-link" href="{{ p.number | tel }}">{{ p.number }}</a></dd></div>{% endfor %}
+      {% for e in company.emails %}<div><dt>{{ t(e.label) or s('common.email') }}</dt><dd><a class="big-link" href="mailto:{{ e.email }}">{{ e.email }}</a></dd></div>{% endfor %}
+      {% if t(company.address) %}<div><dt>{{ s('common.address') }}</dt><dd>{{ t(company.address) }}{% if company.map_url | safeurl %}<br><a href="{{ company.map_url | safeurl }}" target="_blank" rel="noopener">{{ s('brand.open_map') }}</a>{% endif %}</dd></div>{% endif %}
+      {% if t(company.hours) %}<div><dt>{{ s('brand.hours') }}</dt><dd>{{ t(company.hours) }}</dd></div>{% endif %}
+      <div><dt>{{ s('footer.social') }}</dt><dd>{{ ui.socials(social, 'socials--inline') }}</dd></div>
+    </dl>
+  </div>
+</section>

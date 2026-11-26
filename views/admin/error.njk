@@ -1,0 +1,7 @@
+{% extends "admin/layout.njk" %}
+{% block content %}
+<h1>{{ title }}</h1>
+<p>{{ message }}</p>
+<p><a class="btn" href="{{ A }}">На головну CMS</a></p>
+{% endblock %}
+{% block bare %}<main class="login-box"><h1>{{ title }}</h1><p>{{ message }}</p><p><a href="{{ A }}/login">Увійти</a></p></main>{% endblock %}

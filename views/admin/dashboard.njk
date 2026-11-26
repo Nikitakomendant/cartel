@@ -1,0 +1,45 @@
+{% extends "admin/layout.njk" %}
+{% block content %}
+<h1>Вітаємо, {{ me.name }}</h1>
+{% if mailIssues and can('*') %}<div class="flash flash--warn">Пошта (SMTP) не налаштована — заявки зберігаються в CMS, але не надходять на email. <a href="{{ A }}/system">Деталі</a></div>{% endif %}
+<div class="tiles">
+  {% if can('applications') %}<a class="tile" href="{{ A }}/applications?status=new"><strong>{{ counts.apps }}</strong><span>нових відгуків на вакансії</span></a>{% endif %}
+  {% if can('submissions') %}<a class="tile" href="{{ A }}/submissions"><strong>{{ counts.subs }}</strong><span>нових заявок із форм</span></a>{% endif %}
+  {% if can('vacancies') %}<a class="tile" href="{{ A }}/c/vacancy"><strong>{{ counts.vac }}</strong><span>опублікованих вакансій</span></a>{% endif %}
+  {% if can('content') %}<a class="tile" href="{{ A }}/c/brand"><strong>{{ counts.brands }}</strong><span>брендів на сайті</span></a>{% endif %}
+</div>
+
+<div class="cols">
+  <section class="panel">
+    <h2>Швидкі дії</h2>
+    <ul class="quick">
+      {% if can('content') %}
+      <li><a href="{{ A }}/c/page">Змінити сторінку (Home, About…)</a></li>
+      <li><form method="post" action="{{ A }}/c/brand/new"><input type="hidden" name="_csrf" value="{{ csrf }}"><button class="linkbtn" type="submit">Додати бренд</button></form></li>
+      <li><form method="post" action="{{ A }}/c/project/new"><input type="hidden" name="_csrf" value="{{ csrf }}"><button class="linkbtn" type="submit">Додати інвестиційний проєкт</button></form></li>
+      <li><form method="post" action="{{ A }}/c/event/new"><input type="hidden" name="_csrf" value="{{ csrf }}"><button class="linkbtn" type="submit">Додати подію в About</button></form></li>
+      {% endif %}
+      {% if can('vacancies') %}<li><form method="post" action="{{ A }}/c/vacancy/new"><input type="hidden" name="_csrf" value="{{ csrf }}"><button class="linkbtn" type="submit">Створити вакансію</button></form></li>{% endif %}
+      {% if can('contacts') %}<li><a href="{{ A }}/settings/company">Змінити телефони й email компанії</a></li>{% endif %}
+      {% if can('media') %}<li><a href="{{ A }}/media">Завантажити фото або відео</a></li>{% endif %}
+    </ul>
+  </section>
+  {% if dirty.length %}
+  <section class="panel">
+    <h2>Є неопубліковані зміни</h2>
+    <p class="muted small">Ці зміни бачите лише ви в CMS. Відкрийте запис і натисніть «Опублікувати».</p>
+    <ul class="list-plain">
+      {% for d in dirty %}<li><a href="{{ A }}/c/{{ d.type }}/{{ d.id }}">{{ titleOf(d.type, d.data) }}</a> <span class="muted small">{{ TYPES[d.type].label }} · {{ d.updated_at | date }}</span></li>{% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+  {% if recentApps.length %}
+  <section class="panel">
+    <h2>Останні відгуки</h2>
+    <ul class="list-plain">
+      {% for a in recentApps %}<li><a href="{{ A }}/applications/{{ a.id }}">{{ a.name }}</a> <span class="muted small">{{ a.vacancy_title }} · {{ a.created_at | date }}</span>{% if a.status == 'new' %} <span class="pill pill--new">нова</span>{% endif %}</li>{% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% set ps = data.projects() %}
+{% if ps.length %}
+<section class="section" id="b-{{ bid }}">
+  <div class="wrap">
+    {% if t(d.title) %}<h2 class="display-m section__title">{{ t(d.title) }}</h2>{% endif %}
+    <ul class="projects">
+      {% for p in ps %}
+      <li class="project-row" id="{{ p.slug }}">
+        <div class="project-row__media">{{ img(p.image, {sizes: '(min-width: 900px) 55vw, 100vw', alt: '', lang: lang}) }}</div>
+        <div class="project-row__body">
+          {% if t(p.location) %}<p class="muted">{{ t(p.location) }}</p>{% endif %}
+          <h3 class="display-s">{{ t(p.title) }}{% if t(p.subtitle) %} <span class="project-row__sub">{{ t(p.subtitle) }}</span>{% endif %}</h3>
+          {% if t(p.short) %}<p>{{ t(p.short) }}</p>{% endif %}
+          <p class="actions">
+            {{ ui.btn(t(p.button_label) or s('project.visit'), p.external_url, 'primary') }}
+            {% if p.url %}{{ ui.btn(s('project.more'), p.url, 'ghost') }}{% endif %}
+          </p>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+{% endif %}

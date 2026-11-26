@@ -1,0 +1,11 @@
+<section class="section section--tint" id="form">
+  <div class="wrap form-block">
+    <div class="form-block__intro">
+      {% if t(d.title) %}<h2 class="display-m">{{ t(d.title) }}</h2>{% endif %}
+      {% if t(d.intro) %}<p class="lead">{{ t(d.intro) }}</p>{% endif %}
+    </div>
+    <div class="form-block__form">
+      {% if d.form == 'cooperation' %}{{ forms.cooperation('b' + bid) }}{% else %}{{ forms.contact('b' + bid) }}{% endif %}
+    </div>
+  </div>
+</section>

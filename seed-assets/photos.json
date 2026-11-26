@@ -1,0 +1,38 @@
+{
+  "_about": "Photos from Pexels (https://www.pexels.com/license/ — free for commercial use, attribution not required). Each number is a Pexels photo id: https://www.pexels.com/photo/<id>/. These are atmosphere photos, not photos of CARTEL venues: replace them with CARTEL's own shoots when available.",
+  "pages": {
+    "home":        { "hero": 28464198, "text_image": [30479386], "cta": 23830927 },
+    "about":       { "hero": 13444089, "text_image": [37686900, 6937428] },
+    "brands":      { "hero": 4508641 },
+    "investments": { "hero": 11346257 },
+    "cooperation": { "hero": 17057034, "cards": [8112158, 9040535] },
+    "vacancies":   { "hero": 6937464, "text_image": [3769740] }
+  },
+  "projects": {
+    "mountain-residence-villas": 7746922
+  },
+  "brands": {
+    "teppan":                      { "hero": 38539264, "gallery": [36131815, 38108599, 30413176, 34313381] },
+    "le-grand":                    { "hero": 37968303, "gallery": [6327536, 29962487, 35501239, 18471540] },
+    "veranda":                     { "hero": 26626726, "gallery": [30489716, 19510302, 14612752, 5863513] },
+    "yeti":                        { "hero": 7357317,  "gallery": [15185997, 14792749, 7363859] },
+    "asia-garden":                 { "hero": 31713504, "gallery": [34692771, 34269065, 8092571] },
+    "jagermeister-apres-ski-zone": { "hero": 21235823, "gallery": [35363317, 29920738, 3609082] },
+    "living-room":                 { "hero": 32568165, "gallery": [9685244, 36694451, 31071253] },
+    "girafa":                      { "hero": 5083908,  "gallery": [6419720, 5083910, 11161412] },
+    "kolyba":                      { "hero": 19992957, "gallery": [7163654, 3893777, 8601694] },
+    "osteria-italiana":            { "hero": 546945,   "gallery": [31637793, 31779533, 37180268] },
+    "plov":                        { "hero": 10541694, "gallery": [9553317, 14693845, 37924312] },
+    "rebra-bbq":                   { "hero": 13203940, "gallery": [8250702, 9650087, 28308007] },
+    "riba-grill":                  { "hero": 2233733,  "gallery": [8352777, 34206381, 10917524] },
+    "panorama-lounge":             { "hero": 36699624, "gallery": [16544183, 1123252, 14766281] },
+    "filvarok":                    { "hero": 18955544, "gallery": [29545366, 10467829, 4956940] },
+    "salo":                        { "hero": 37770006, "gallery": [18743159, 12123372, 30557566] },
+    "mangalica":                   { "hero": 31189384, "gallery": [38441087, 34636420, 30852893] },
+    "eat-n-go":                    { "hero": 36043781, "gallery": [35988767, 20529386, 104884] },
+    "buka-apart-hotel":            { "hero": 106037,   "gallery": [39894345, 7745929, 31146633] },
+    "mountain-residence":          { "hero": 4969871,  "gallery": [9899838, 35264654, 32664272] },
+    "voda-club":                   { "hero": 18310406, "gallery": [7041600, 32797306, 6667474] },
+    "banka-na-drovah":             { "hero": 5582214,  "gallery": [8092430, 38495506, 25084818] }
+  }
+}

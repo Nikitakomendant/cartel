@@ -1,0 +1,91 @@
+{% import "partials/macros.njk" as ui with context %}
+
+{% macro consent(uid) %}
+<div class="field field--check" data-field="consent">
+  <label class="check"><input type="checkbox" name="consent" value="on" required> <span>{{ s('form.consent') }} <a href="{{ lp('/privacy') }}" target="_blank">{{ s('form.privacy') }}</a></span></label>
+  <p class="field__error" role="alert" hidden></p>
+</div>
+{% endmacro %}
+
+{% macro result() %}
+<div class="form-result" role="status" aria-live="polite" tabindex="-1" hidden>
+  <p class="form-result__title">{{ s('form.success_title') }}</p>
+  <p class="form-result__text"></p>
+</div>
+<p class="form-error" role="alert" hidden></p>
+{% endmacro %}
+
+{% macro cooperation(uid='coop') %}
+<form class="form" action="/api/forms/cooperation" method="post" novalidate data-form>
+  {{ ui.formMeta('cooperation', lang, data.formToken('cooperation'), turnstileKey) }}
+  <fieldset class="field field--radios" data-field="direction">
+    <legend>{{ s('form.direction') }}<span class="req" aria-hidden="true"> *</span></legend>
+    <label class="radio"><input type="radio" name="direction" value="business" required> <span>{{ s('form.dir_business') }}</span></label>
+    <label class="radio"><input type="radio" name="direction" value="creators"> <span>{{ s('form.dir_creators') }}</span></label>
+    <p class="field__error" role="alert" hidden></p>
+  </fieldset>
+  <div class="form__row">
+    {{ ui.field('name', s('form.name'), 'text', true, 'name', '', '', uid) }}
+    {{ ui.field('company', s('form.company'), 'text', true, 'organization', '', '', uid) }}
+  </div>
+  <div class="form__row">
+    {{ ui.field('contact', s('form.contact'), 'text', true, 'email', '', 'data-validate="contact"', uid) }}
+    {{ ui.field('links', s('form.links'), 'text', false, 'url', '', '', uid) }}
+  </div>
+  {{ ui.field('proposal', s('form.proposal'), 'textarea', true, '', '', '', uid) }}
+  {{ consent(uid) }}
+  <button class="btn btn--primary" type="submit">{{ s('form.send') }}</button>
+  {{ result() }}
+</form>
+{% endmacro %}
+
+{% macro contact(uid='contact') %}
+<form class="form" action="/api/forms/contact" method="post" novalidate data-form>
+  {{ ui.formMeta('contact', lang, data.formToken('contact'), turnstileKey) }}
+  <div class="form__row">
+    {{ ui.field('name', s('form.name'), 'text', true, 'name', '', '', uid) }}
+    {{ ui.field('contact', s('form.contact'), 'text', true, 'email', '', 'data-validate="contact"', uid) }}
+  </div>
+  {% if contactTopics.length %}
+  <div class="field" data-field="topic">
+    <label for="f-topic-{{ uid }}">{{ s('form.topic') }}</label>
+    <select id="f-topic-{{ uid }}" name="topic">
+      {% for tp in contactTopics %}<option value="{{ loop.index0 }}">{{ t(tp.label) }}</option>{% endfor %}
+    </select>
+  </div>
+  {% endif %}
+  {{ ui.field('message', s('form.message'), 'textarea', true, '', '', '', uid) }}
+  {{ consent(uid) }}
+  <button class="btn btn--primary" type="submit">{{ s('form.send') }}</button>
+  {{ result() }}
+</form>
+{% endmacro %}
+
+{% macro apply(selected=null, uid='apply') %}
+<form class="form" action="/api/forms/apply" method="post" enctype="multipart/form-data" novalidate data-form>
+  {{ ui.formMeta('apply', lang, data.formToken('apply'), turnstileKey) }}
+  <div class="form__row">
+    {{ ui.field('name', s('form.name'), 'text', true, 'name', '', '', uid) }}
+    {{ ui.field('phone', s('form.phone'), 'tel', true, 'tel', '', 'data-validate="phone" inputmode="tel"', uid) }}
+  </div>
+  <div class="form__row">
+    <div class="field" data-field="vacancy">
+      <label for="f-vacancy-{{ uid }}">{{ s('form.vacancy') }}</label>
+      <select id="f-vacancy-{{ uid }}" name="vacancy">
+        {% for v in data.vacancies() %}<option value="{{ v.id }}"{% if selected == v.id %} selected{% endif %}>{{ t(v.title) }}{% if t(v.location) %} — {{ t(v.location) }}{% endif %}</option>{% endfor %}
+        <option value=""{% if not selected and not data.vacancies().length %} selected{% endif %}>{{ s('vac.general') }}</option>
+      </select>
+    </div>
+    {{ ui.field('email', s('form.email'), 'email', false, 'email', '', 'data-validate="email"', uid) }}
+  </div>
+  <div class="field field--file" data-field="cv">
+    <label for="f-cv-{{ uid }}">{{ s('form.cv') }}</label>
+    <input id="f-cv-{{ uid }}" name="cv" type="file" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/jpeg,image/png" data-max="10485760">
+    <p class="field__hint">{{ s('form.cv_hint') }}</p>
+    <p class="field__error" role="alert" hidden></p>
+  </div>
+  {{ consent(uid) }}
+  <button class="btn btn--primary" type="submit">{{ s('vac.apply') }}</button>
+  {{ result() }}
+</form>
+{% endmacro %}

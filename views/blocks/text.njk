@@ -1,0 +1,6 @@
+<section class="section section--{{ d.theme or 'light' }}" id="b-{{ bid }}">
+  <div class="wrap text-block text-block--{{ d.layout or 'split' }}">
+    {% if t(d.title) %}<h2 class="display-m text-block__title">{{ t(d.title) }}</h2>{% endif %}
+    <div class="prose text-block__body">{{ t(d.body) | rich }}</div>
+  </div>
+</section>

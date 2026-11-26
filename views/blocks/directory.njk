@@ -1,0 +1,25 @@
+{% set groups = data.directory() %}
+{% if groups.length %}
+<section class="section" id="directory">
+  <div class="wrap">
+    {% if t(d.title) %}<h2 class="display-m section__title">{{ t(d.title) }}</h2>{% endif %}
+    {% for g in groups %}
+    <div class="directory">
+      <h3 class="directory__cat">{{ s('cat.' + g.cat) }}</h3>
+      <ul class="directory__list">
+        {% for b in g.items %}
+        <li class="directory__item">
+          <a class="directory__name" href="{{ b.url }}">{{ t(b.name) }}</a>
+          <span class="directory__addr">{{ t(b.address) or t(b.city) }}{% if b.map_url | safeurl %} <a href="{{ b.map_url | safeurl }}" target="_blank" rel="noopener">{{ s('brand.open_map') }}</a>{% elif b.geo %} <a href="https://www.google.com/maps/search/?api=1&query={{ b.geo.lat }},{{ b.geo.lng }}" target="_blank" rel="noopener">{{ s('brand.open_map') }}</a>{% endif %}</span>
+          <span class="directory__phones">
+            {% if b.reception_phone %}<a href="{{ b.reception_phone | tel }}">{{ b.reception_phone }}</a>{% endif %}
+            {% for ph in b.phones %}<a href="{{ ph | tel }}">{{ ph }}</a>{% endfor %}
+          </span>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}

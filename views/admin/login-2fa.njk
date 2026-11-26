@@ -1,0 +1,17 @@
+{% extends "admin/layout.njk" %}
+{% set title = 'Підтвердження входу' %}
+{% block bodyclass %}login{% endblock %}
+{% block bare %}
+<main class="login-box">
+  <p class="side__logo">CARTEL <span>CMS</span></p>
+  <h1>Код із застосунку</h1>
+  <p class="muted">Відкрийте Google Authenticator або інший застосунок і введіть 6 цифр.</p>
+  {% if error %}<div class="flash flash--err" role="alert">{{ error }}</div>{% endif %}
+  <form method="post" action="{{ A }}/login/2fa" class="stack">
+    <input type="hidden" name="next" value="{{ next }}">
+    <label class="f">Код<input type="text" name="code" inputmode="numeric" pattern="[0-9 ]{6,7}" autocomplete="one-time-code" required autofocus maxlength="7"></label>
+    <button class="btn btn--primary" type="submit">Підтвердити</button>
+  </form>
+  <p class="small"><a href="{{ A }}/login">Повернутися</a></p>
+</main>
+{% endblock %}

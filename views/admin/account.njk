@@ -1,0 +1,36 @@
+{% extends "admin/layout.njk" %}
+{% block content %}
+<h1>Мій профіль</h1>
+{% if force %}<div class="flash flash--warn">Встановіть власний пароль, щоб продовжити роботу.</div>{% endif %}
+<div class="cols">
+  <form method="post" action="{{ A }}/account/password" class="panel stack">
+    <input type="hidden" name="_csrf" value="{{ csrf }}">
+    <h2>Змінити пароль</h2>
+    <label class="f">Поточний пароль<input type="password" name="current" required autocomplete="current-password"></label>
+    <label class="f">Новий пароль<input type="password" name="password" required minlength="10" autocomplete="new-password"><span class="hint">Щонайменше 10 символів, літери та цифри.</span></label>
+    <label class="f">Ще раз<input type="password" name="password2" required minlength="10" autocomplete="new-password"></label>
+    <button class="btn btn--primary">Змінити пароль</button>
+  </form>
+  {% if not force %}
+  <section class="panel stack">
+    <h2>Двофакторний вхід</h2>
+    {% if u.totp_enabled %}
+      <p>Увімкнено. При вході потрібен код із застосунку.</p>
+      <form method="post" action="{{ A }}/account/2fa" class="stack"><input type="hidden" name="_csrf" value="{{ csrf }}"><input type="hidden" name="action" value="disable">
+        <label class="f">Пароль для підтвердження<input type="password" name="current" required></label>
+        <button class="btn">Вимкнути 2FA</button></form>
+    {% elif qr %}
+      <p>1. Встановіть Google Authenticator, 1Password або Microsoft Authenticator.<br>2. Відскануйте код або введіть ключ вручну.<br>3. Введіть 6 цифр із застосунку.</p>
+      <img src="{{ qr }}" alt="QR-код для застосунку" width="220" height="220" class="qr">
+      <p class="small">Ключ: <code>{{ secret }}</code></p>
+      <form method="post" action="{{ A }}/account/2fa" class="stack"><input type="hidden" name="_csrf" value="{{ csrf }}"><input type="hidden" name="action" value="enable">
+        <label class="f">Код<input name="code" inputmode="numeric" required maxlength="7" autocomplete="one-time-code"></label>
+        <button class="btn btn--primary">Увімкнути</button></form>
+    {% else %}
+      <p>Додатковий захист: навіть якщо пароль украдуть, без телефону увійти не вийде. Рекомендовано для адміністраторів і HR.</p>
+      <p><a class="btn" href="{{ A }}/account?setup2fa=1">Налаштувати</a></p>
+    {% endif %}
+  </section>
+  {% endif %}
+</div>
+{% endblock %}
