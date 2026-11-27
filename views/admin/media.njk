@@ -1,7 +1,0 @@
-{% extends "admin/layout.njk" %}
-{% block content %}
-<div class="head"><h1>Медіатека</h1></div>
-<p class="muted">Фото автоматично стискаються й нарізаються під різні екрани — завантажуйте оригінали (до 25 МБ). Відео — MP4 до 200 МБ, без звуку для фонів.</p>
-<div id="media-library" class="medialib" data-mode="library"></div>
-{% endblock %}
-{% block scripts %}<script src="/static/js/editor.js?v={{ v }}" nonce="{{ nonce }}"></script>{% endblock %}

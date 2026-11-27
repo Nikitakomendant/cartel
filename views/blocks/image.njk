@@ -1,6 +1,0 @@
-{% if d.image %}
-<figure class="big-image big-image--{{ d.width or 'full' }}" id="b-{{ bid }}">
-  <div class="{{ 'wrap' if d.width == 'contained' else '' }}">{{ img(d.image, {sizes: '100vw', lang: lang}) }}</div>
-  {% if t(d.caption) %}<figcaption class="wrap">{{ t(d.caption) }}</figcaption>{% endif %}
-</figure>
-{% endif %}

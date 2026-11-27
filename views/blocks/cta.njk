@@ -1,8 +1,0 @@
-<section class="cta{% if d.image %} cta--image{% endif %}" id="b-{{ bid }}">
-  {% if d.image %}<div class="cta__media">{{ img(d.image, {sizes: '100vw', alt: '', lang: lang}) }}</div>{% endif %}
-  <div class="wrap cta__body">
-    {% if t(d.title) %}<h2 class="display-m">{{ t(d.title) }}</h2>{% endif %}
-    {% if t(d.text) %}<p class="lead">{{ t(d.text) }}</p>{% endif %}
-    <p class="actions">{{ ui.btn(t(d.button_label), d.button_url, 'light') }}{{ ui.btn(t(d.button2_label), d.button2_url, 'ghost-light') }}</p>
-  </div>
-</section>

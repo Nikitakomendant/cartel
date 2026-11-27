@@ -1,9 +1,0 @@
-{# Renders a list of CMS blocks. `blocks` and optional `firstHero` come from the context. #}
-{% import "partials/macros.njk" as ui with context %}
-{% import "partials/forms.njk" as forms with context %}
-{% for b in blocks %}
-{% set d = b.data %}
-{% set isFirst = loop.first %}
-{% set bid = b.id %}
-{% include "blocks/" + b.type + ".njk" ignore missing %}
-{% endfor %}
