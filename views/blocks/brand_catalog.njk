@@ -1,0 +1,34 @@
+{% set all = data.brands() %}
+<section class="section catalog" id="b-{{ bid }}" data-catalog>
+  <div class="wrap">
+    {% if t(d.title) %}<h2 class="display-m section__title">{{ t(d.title) }}</h2>{% endif %}
+    <div class="tabs" role="tablist" aria-label="{{ s('nav.brands') }}">
+      <button type="button" role="tab" class="tabs__tab" aria-selected="true" data-cat="all">{{ s('cat.all') }} <span class="tabs__n">{{ all.length }}</span></button>
+      {% for c in data.categories() %}
+      <button type="button" role="tab" class="tabs__tab" aria-selected="false" data-cat="{{ c }}">{{ s('cat.' + c) }} <span class="tabs__n">{{ data.brands(c).length }}</span></button>
+      {% endfor %}
+    </div>
+    <ul class="catalog__grid" role="list">
+      {% for b in all %}
+      <li class="brand-card" data-cat="{{ b.category }}">
+        <a href="{{ b.url }}">
+          <div class="brand-card__media">
+            {% if b.cardImage %}{{ img(b.cardImage, {sizes: '(min-width: 1100px) 33vw, (min-width: 640px) 50vw, 100vw', alt: '', lang: lang}) }}{% else %}<span class="brand-card__placeholder">{{ t(b.name) }}</span>{% endif %}
+            {% if t(b.notice) %}<span class="badge">{{ t(b.notice) }}</span>{% endif %}
+          </div>
+          <h3 class="brand-card__name">{{ t(b.name) }}</h3>
+          <p class="brand-card__meta">{{ s('cat.' + b.category) }}{% if t(b.city) %}, {{ t(b.city) }}{% endif %}</p>
+          {% if t(b.tagline) %}<p class="brand-card__text">{{ t(b.tagline) }}</p>{% endif %}
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+    <p class="catalog__empty" hidden>{{ s('brand.empty') }}</p>
+    {% if d.show_map !== false and data.mapPoints().length %}
+    <div class="catalog__map">
+      <h3 class="display-s">{{ s('brand.map') }}</h3>
+      <div class="map" data-map data-points="{{ data.mapPoints() | jsonattr }}" data-labels="{{ {restaurant: s('cat.restaurant'), hotel: s('cat.hotel'), spa: s('cat.spa'), more: s('brand.more')} | jsonattr }}" role="region" aria-label="{{ s('brand.map') }}"></div>
+    </div>
+    {% endif %}
+  </div>
+</section>

@@ -1,0 +1,28 @@
+{% set vs = data.vacancies() %}
+<section class="section" id="vacancies">
+  <div class="wrap">
+    <div class="section__head">
+      {% if t(d.title) %}<h2 class="display-m">{{ t(d.title) }}</h2>{% endif %}
+      {% if t(d.intro) %}<p class="lead">{{ t(d.intro) }}</p>{% endif %}
+    </div>
+    {% if vs.length %}
+    <ul class="jobs">
+      {% for v in vs %}
+      <li class="job">
+        <a href="{{ v.url }}">
+          <h3 class="job__title">{{ t(v.title) }}</h3>
+          <p class="job__meta">{{ t(v.location) }}{% if t(v.employment) %}<span>{{ t(v.employment) }}</span>{% endif %}{% if t(v.salary) %}<span>{{ t(v.salary) }}</span>{% endif %}</p>
+          <span class="job__cta">{{ s('brand.more') }}</span>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p class="empty">{{ s('vac.empty') }}</p>
+    {% endif %}
+    <div class="apply-box" id="form">
+      <h3 class="display-s">{{ s('vac.form_title') }}</h3>
+      {{ forms.apply(null, 'list-' + bid) }}
+    </div>
+  </div>
+</section>

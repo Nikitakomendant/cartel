@@ -1,0 +1,41 @@
+{% extends "admin/layout.njk" %}
+{% block content %}
+<h1>Користувачі</h1>
+{% if newPassword %}
+<div class="flash flash--ok" role="status">
+  Тимчасовий пароль для <strong>{{ newPassword.email }}</strong>: <code class="copy">{{ newPassword.pw }}</code><br>
+  <span class="small">Передайте його особисто (не в загальний чат). Після входу система попросить змінити пароль. Цей пароль більше ніде не показується.</span>
+</div>
+{% endif %}
+<details class="panel">
+  <summary><strong>Додати користувача</strong></summary>
+  <form method="post" class="inline-form">
+    <input type="hidden" name="_csrf" value="{{ csrf }}">
+    <label class="f">Імʼя<input name="name" required maxlength="120"></label>
+    <label class="f">Email<input type="email" name="email" required maxlength="200"></label>
+    <label class="f">Роль<select name="role"><option value="marketing">Маркетинг — контент</option><option value="hr">HR — вакансії та відгуки</option><option value="admin">Адміністратор — усе</option></select></label>
+    <button class="btn btn--primary">Створити</button>
+  </form>
+</details>
+<table class="table">
+  <thead><tr><th>Користувач</th><th>Роль</th><th>Останній вхід</th><th>2FA</th><th>Дії</th></tr></thead>
+  <tbody>
+  {% for u in users %}
+  <tr{% if not u.active %} class="is-off"{% endif %}>
+    <td><strong>{{ u.name }}</strong><br><span class="small muted">{{ u.email }}</span>{% if not u.active %} <span class="pill">вимкнено</span>{% endif %}{% if u.locked_until and u.locked_until > now() %} <span class="pill pill--dirty">заблоковано</span>{% endif %}</td>
+    <td><form method="post" action="{{ A }}/users/{{ u.id }}" class="inline"><input type="hidden" name="_csrf" value="{{ csrf }}"><input type="hidden" name="action" value="role">
+      <select name="role" data-autosubmit aria-label="Роль">{% for k, l in roleLabel %}<option value="{{ k }}"{% if u.role == k %} selected{% endif %}>{{ l }}</option>{% endfor %}</select></form></td>
+    <td class="small">{{ u.last_login_at | date }}</td>
+    <td>{{ 'так' if u.totp_enabled else '—' }}</td>
+    <td class="actions-cell">
+      <form method="post" action="{{ A }}/users/{{ u.id }}" class="inline" data-confirm="Створити новий тимчасовий пароль? Поточні сесії користувача завершаться."><input type="hidden" name="_csrf" value="{{ csrf }}"><button class="btn btn--sm" name="action" value="reset">Скинути пароль</button></form>
+      {% if u.totp_enabled %}<form method="post" action="{{ A }}/users/{{ u.id }}" class="inline" data-confirm="Вимкнути 2FA для користувача (наприклад, якщо він втратив телефон)?"><input type="hidden" name="_csrf" value="{{ csrf }}"><button class="btn btn--sm" name="action" value="reset2fa">Скинути 2FA</button></form>{% endif %}
+      {% if u.locked_until and u.locked_until > now() %}<form method="post" action="{{ A }}/users/{{ u.id }}" class="inline"><input type="hidden" name="_csrf" value="{{ csrf }}"><button class="btn btn--sm" name="action" value="unlock">Розблокувати</button></form>{% endif %}
+      {% if u.id != me.id %}<form method="post" action="{{ A }}/users/{{ u.id }}" class="inline"><input type="hidden" name="_csrf" value="{{ csrf }}"><button class="btn btn--sm btn--quiet" name="action" value="toggle">{{ 'Вимкнути' if u.active else 'Увімкнути' }}</button></form>{% endif %}
+    </td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+<p class="small muted">Ролі: <b>Адміністратор</b> — усі налаштування й користувачі; <b>Маркетинг</b> — сторінки, бренди, проєкти, команда, події, цитати, медіа, контакти, заявки з форм; <b>HR</b> — лише вакансії, відгуки кандидатів і контакти рекрутера.</p>
+{% endblock %}

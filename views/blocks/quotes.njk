@@ -1,0 +1,26 @@
+{% set qs = data.quotes(d.ids) %}
+{% if qs.length %}
+<section class="section section--quotes" id="b-{{ bid }}" aria-roledescription="carousel"{% if t(d.title) %} aria-label="{{ t(d.title) }}"{% endif %}>
+  <div class="wrap">
+    {% if t(d.title) %}<h2 class="display-s section__title">{{ t(d.title) }}</h2>{% endif %}
+    <div class="quotes" data-quotes>
+      {% for q in qs %}
+      <figure class="quote" {% if not loop.first %}hidden{% endif %} aria-roledescription="slide" aria-label="{{ loop.index }} / {{ qs.length }}">
+        <blockquote><p>{{ t(q.text) }}</p></blockquote>
+        <figcaption>
+          {% if q.photo %}<span class="quote__photo">{{ img(q.photo, {sizes: '64px', alt: '', lang: lang}) }}</span>{% endif %}
+          <span><strong>{{ t(q.author) }}</strong>{% if t(q.role) %}<span class="muted">{{ t(q.role) }}</span>{% endif %}</span>
+        </figcaption>
+      </figure>
+      {% endfor %}
+      {% if qs.length > 1 %}
+      <div class="quotes__nav">
+        <button type="button" class="round-btn" data-quote-prev aria-label="{{ s('common.prev') }}">‹</button>
+        <span class="quotes__count" data-quote-count>1 / {{ qs.length }}</span>
+        <button type="button" class="round-btn" data-quote-next aria-label="{{ s('common.next') }}">›</button>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+{% endif %}

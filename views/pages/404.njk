@@ -1,0 +1,9 @@
+{% extends "layout.njk" %}
+{% block main %}
+<section class="error-page wrap">
+  <p class="error-page__code" aria-hidden="true">404</p>
+  <h1 class="display-l">{{ s('e404.title') }}</h1>
+  <p class="lead">{{ s('e404.text') }}</p>
+  <p class="actions"><a class="btn btn--primary" href="{{ lp('/') }}">{{ s('e404.home') }}</a> <a class="btn btn--ghost" href="{{ lp('/brands') }}">{{ s('brand.all') }}</a></p>
+</section>
+{% endblock %}

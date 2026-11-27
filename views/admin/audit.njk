@@ -1,0 +1,9 @@
+{% extends "admin/layout.njk" %}
+{% block content %}
+<h1>Журнал дій</h1>
+<p class="muted">Останні 300 подій: входи, публікації, видалення, перегляди резюме.</p>
+<table class="table">
+  <thead><tr><th>Коли</th><th>Хто</th><th>Дія</th><th>Деталі</th><th>IP</th></tr></thead>
+  <tbody>{% for r in rows %}<tr><td class="nowrap small">{{ r.created_at | date }}</td><td>{{ r.name or '—' }}</td><td>{{ r.action }}</td><td class="small">{{ r.details }}</td><td class="small muted">{{ r.ip }}</td></tr>{% endfor %}</tbody>
+</table>
+{% endblock %}

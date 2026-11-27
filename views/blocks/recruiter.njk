@@ -1,0 +1,18 @@
+<section class="section section--dark" id="recruiter">
+  <div class="wrap recruiter">
+    <div>
+      {% if t(d.title) %}<h2 class="display-m">{{ t(d.title) }}</h2>{% endif %}
+      {% if t(d.text) %}<p class="lead">{{ t(d.text) }}</p>{% endif %}
+    </div>
+    <ul class="recruiter__links">
+      {% if hr.phone %}<li><span class="muted">{{ s('recruiter.call') }}{% if hr.recruiter_name %}, {{ hr.recruiter_name }}{% endif %}</span><a class="big-link" href="{{ hr.phone | tel }}">{{ hr.phone }}</a></li>{% endif %}
+      {% if hr.email %}<li><span class="muted">Email</span><a class="big-link" href="mailto:{{ hr.email }}">{{ hr.email }}</a></li>{% endif %}
+      <li class="recruiter__msgs">
+        {% if hr.telegram | safeurl %}<a class="btn btn--ghost-light btn--sm" href="{{ hr.telegram | safeurl }}" target="_blank" rel="noopener">Telegram</a>{% endif %}
+        {% if hr.viber %}<a class="btn btn--ghost-light btn--sm" href="{{ ('viber://chat?number=' + (hr.viber | replace(r/[^\d+]/g, '') | replace('+', '%2B'))) }}">Viber</a>{% endif %}
+        {% if hr.instagram | safeurl %}<a class="btn btn--ghost-light btn--sm" href="{{ hr.instagram | safeurl }}" target="_blank" rel="noopener">Instagram</a>{% endif %}
+        {% for o in hr.other %}{% if o.url | safeurl %}<a class="btn btn--ghost-light btn--sm" href="{{ o.url | safeurl }}" target="_blank" rel="noopener">{{ o.label }}</a>{% endif %}{% endfor %}
+      </li>
+    </ul>
+  </div>
+</section>

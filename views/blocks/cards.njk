@@ -1,0 +1,20 @@
+<section class="section section--{{ d.theme or 'light' }}" id="b-{{ bid }}">
+  <div class="wrap">
+    {% if t(d.title) or t(d.intro) %}
+    <div class="section__head">
+      {% if t(d.title) %}<h2 class="display-m">{{ t(d.title) }}</h2>{% endif %}
+      {% if t(d.intro) %}<p class="lead">{{ t(d.intro) }}</p>{% endif %}
+    </div>
+    {% endif %}
+    <ul class="cards cards--{{ d.columns or '3' }}">
+      {% for it in d.items %}
+      <li class="card">
+        {% if it.image %}<div class="card__media">{{ img(it.image, {sizes: '(min-width: 900px) 33vw, 100vw', lang: lang}) }}</div>{% endif %}
+        <h3 class="card__title">{{ t(it.title) }}</h3>
+        {% if t(it.text) %}<p class="card__text">{{ t(it.text) | nl2br }}</p>{% endif %}
+        {% if it.url | safeurl %}<a class="card__link" href="{{ it.url | safeurl }}"{% if it.url | isExternal %} target="_blank" rel="noopener"{% endif %}>{{ t(it.link_label) or s('brand.more') }}</a>{% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

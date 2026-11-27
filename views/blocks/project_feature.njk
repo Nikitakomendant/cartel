@@ -1,0 +1,18 @@
+{% set p = data.project(d.project) %}
+{% if p %}
+<section class="feature feature--{{ d.layout or 'cover' }}" id="{{ p.slug }}">
+  <div class="feature__media">
+    {{ img(p.image, {sizes: '100vw', alt: '', lang: lang}) }}
+    {{ ui.videoTag(p.video, p.image, 'feature__video') }}
+  </div>
+  <div class="wrap feature__body">
+    {% if t(d.eyebrow) %}<p class="feature__kicker">{{ t(d.eyebrow) }}</p>{% endif %}
+    <h2 class="display-l feature__title">{{ t(p.title) }}{% if t(p.subtitle) %}<span class="feature__subtitle">{{ t(p.subtitle) }}</span>{% endif %}</h2>
+    {% if t(p.short) %}<p class="lead">{{ t(p.short) }}</p>{% endif %}
+    <p class="actions">
+      {{ ui.btn(t(p.button_label) or s('project.visit'), p.external_url, 'light') }}
+      {% if p.url %}{{ ui.btn(s('project.more'), p.url, 'ghost-light') }}{% endif %}
+    </p>
+  </div>
+</section>
+{% endif %}
